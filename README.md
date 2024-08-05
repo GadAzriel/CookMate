@@ -38,25 +38,13 @@ CookMate is an interactive web application designed to make cooking a seamless a
    git clone https://github.com/yourusername/CookMate.git
 2. Navigate to the project directory:
    ```bash
-   cd CookMate
+   cd cookmate
 3. Install the dependencies:
    ```bash
    npm install
    npm install -D tailwindcss
    npx tailwindcss init
-4. Navigate to the backend directory
-   ```bash
-   cd ./backend
-5. Install the dependencies:
-   ```bash
-   npm install dotenv
-6. Run the server:
-   ```bash
-   node server.js
-7. Navigate to the frontend directory
-   ```bash
-   cd ./frontend
-8. Run the application
+4. Run the application
    ```bash
    npm start
 This will launch the CookMate website on localhost:3000.
