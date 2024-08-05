@@ -1,6 +1,6 @@
 ## [CookMate - Interactive Cooking Website](https://cook-mate-ten.vercel.app/)
 
-![CookMate Logo](./frontend/public/logo.png)
+![CookMate Logo](./public/logo.png)
 
 CookMate is an interactive web application designed to make cooking a seamless and enjoyable experience. Users can browse through a variety of recipes, get detailed instructions for preparing dishes, and engage in a step-by-step cooking guide.
 
