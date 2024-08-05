@@ -4,7 +4,10 @@ import logo from '../assets/images/logo.png';
 
 const Header = () => {
   const navigate = useNavigate();
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Initialize state from localStorage or default to false
+    return localStorage.getItem('isDarkMode') === 'true';
+  });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -13,6 +16,8 @@ const Header = () => {
     } else {
       document.body.classList.remove('dark');
     }
+    // Save dark mode state to localStorage
+    localStorage.setItem('isDarkMode', isDarkMode);
   }, [isDarkMode]);
 
   const toggleDarkMode = () => {
