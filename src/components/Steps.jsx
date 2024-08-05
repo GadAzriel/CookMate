@@ -96,7 +96,13 @@ function Steps() {
   const startListening = () => {
     setIsListening(true);
     resetTranscript();
+    SpeechRecognition.startListening({ continuous: true });
     speakInstruction(recipe.instructions[currentStep]);
+  };
+
+  const stopListening = () => {
+    setIsListening(false);
+    SpeechRecognition.stopListening();
   };
 
   const getStepImage = (recipeName, stepNumber) => {
@@ -162,10 +168,17 @@ function Steps() {
             <div className="mt-4 flex justify-center">
               <button
                 onClick={startListening}
-                className={`bg-gray-500 text-white px-6 py-2 mt-4 rounded-full hover:bg-blue-200 transition duration-300 w-full ${isListening ? 'opacity-50' : ''}`}
+                className={`bg-gray-500 text-white px-6 py-2 mt-4 rounded-full hover:bg-blue-200 transition duration-300 w-full ${isListening ? 'hidden' : ''}`}
                 disabled={isListening}
               >
                 Start Voice Commands
+              </button>
+              <button
+                onClick={stopListening}
+                className={`bg-gray-500 text-white px-6 py-2 mt-4 rounded-full hover:bg-red-200 transition duration-300 w-full ${isListening ? '' : 'hidden'}`}
+                disabled={!isListening}
+              >
+                Stop Voice Commands
               </button>
             </div>
           </div>
