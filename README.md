@@ -1,4 +1,4 @@
-## [CookMate - Interactive Cooking Website](https://cook-mate-ten.vercel.app/)
+## [CookMate - Interactive Cooking Website](https://cook-mate-kappa.vercel.app/)
 
 ![CookMate Logo](./public/logo.png)
 
