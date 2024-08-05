@@ -29,16 +29,32 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <script type="module" src="../src/index.js"></script> <!-- main script -->
+    <script>
+      // custom config for the MTW app 
+      const mtwAppConfig = {
+          border: true // app border in the MTW page                    
+      }
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+      ///////////////////////////////////////////////////////
+      // implement this functions in order to use private API        
+      const sendPrivateApiRequest = async () => {
+          // your code here:
+          // sendRequestToParent({ cat: 'getAssets' })
+      }        
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      const acceptPrivateApiResponse = async (data) => {
+          // process received data here:
+          // console.log(data)
+      }
+
+      // use this in order to send on document load
+      document.addEventListener('DOMContentLoaded', () => {
+          // your code here:
+          //sendRequestToParent({ method: 'getAssets' })
+      })
+
+  </script>
   <script src="https://morethanwallet.com/appstore/index.js"></script>
   </body>
 </html>
