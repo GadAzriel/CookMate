@@ -28,11 +28,11 @@ function Recipes() {
     <main className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 font-tenor-sans min-h-screen flex flex-col items-center py-20 px-4 md:px-8">
       <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden w-full max-w-screen-xl p-8">
         <div className="container mx-auto px-4">
-          <div className="relative flex items-center justify-center mb-4 md:mb-8">
-            <Link to="/" className="absolute left-0 md:left-auto bg-gray-500 text-white text-center py-2 px-6 rounded-full hover:bg-gray-700 transition duration-300 md:mx-4">
+          <div className="flex items-center justify-between mb-4">
+            <Link to="/" className="bg-gray-500 text-white text-center py-2 px-6 rounded-full hover:bg-gray-700 transition duration-300">
               Back
             </Link>
-            <h1 className="text-4xl md:text-5xl font-bold text-center w-full">
+            <h1 className="text-4xl md:text-5xl font-bold text-center flex-grow mx-4">
               CookMate's Recipes
             </h1>
           </div>
