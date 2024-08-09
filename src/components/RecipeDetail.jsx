@@ -53,7 +53,10 @@ function RecipeDetail() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center md:items-start bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="md:w-1/2 p-8">
-            <h2 className="text-3xl font-bold mb-4 text-blue-800">{recipe.title}</h2>
+          <div className="relative flex items-center mb-4">
+            <Link to="/recipes" className="bg-gray-500 text-white text-center py-2 px-6 rounded-full hover:bg-gray-700 transition duration-300" style={{ flexShrink: 0 }}> Back </Link>
+            <h2 className="text-3xl font-bold text-blue-800 mx-auto" style={{ flexGrow: 1, textAlign: 'center' }}>{recipe.title}</h2>
+          </div>
             <div className="mb-4">
               <label htmlFor="numberOfDishes" className="block text-lg font-bold mb-2">Number of Dishes:</label>
               <select id="numberOfDishes" className="border rounded-lg p-1 w-20" value={numberOfDishes} onChange={handleNumberOfDishesChange}>
