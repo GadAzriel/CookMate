@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import recipesData from '../recipes.json';
+import { FaArrowLeft } from 'react-icons/fa';
 
 // Function to dynamically import an image of a specified recipe
 const importAll = (r) => {
@@ -49,43 +50,47 @@ function RecipeDetail() {
   };
 
   return (
-    <div className="min-h-screen py-8 bg-gray-100 text-gray-800">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center md:items-start bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="md:w-1/2 p-8">
-          <div className="relative flex items-center mb-4">
-            <Link to="/recipes" className="bg-gray-500 text-white text-center py-2 px-6 rounded-full hover:bg-gray-700 transition duration-300" style={{ flexShrink: 0 }}> Back </Link>
-            <h2 className="text-3xl font-bold text-blue-800 mx-auto" style={{ flexGrow: 1, textAlign: 'center' }}>{recipe.title}</h2>
-          </div>
-            <div className="mb-4">
-              <label htmlFor="numberOfDishes" className="block text-lg font-bold mb-2">Number of Dishes:</label>
-              <select id="numberOfDishes" className="border rounded-lg p-1 w-20" value={numberOfDishes} onChange={handleNumberOfDishesChange}>
-                {[...Array(10).keys()].map(i => (
-                  // Mapping each number to an option element
-                  <option key={i} value={i + 1}>{i + 1}</option>
-                ))}
-              </select>
-            </div>
-            <div className="text-left max-h-96 overflow-y-auto pr-4">
-              <p className="mb-2"><strong>Allergies:</strong> {recipe.allergies}</p>
-              <p className="mb-2"><strong>Difficulty:</strong> {recipe.difficulty}</p>
-              <p className="mb-2"><strong>Ingredients:</strong></p>
-              <ul className="list-disc list-inside mb-4">{formatIngredients()}</ul>
-              <p className="mb-2"><strong>Instructions:</strong></p>
-              <ol className="list-decimal list-inside mb-4">{formatInstructions()}</ol>
-            </div>
-            <div className="flex justify-center mt-4">
-              <Link to={`/recipes/${recipe.title}/steps`} className="bg-gray-500 text-white text-center py-2 px-6 rounded-full hover:bg-gray-700 transition duration-300">
-                Cook by Steps
+    <div className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 font-tenor-sans min-h-screen flex flex-col items-center py-20 px-4 md:px-8">
+      <div className="container-custom mx-auto px-4 text-center card-custom shadow-lg bg-white rounded-lg p-8">
+            <div className="relative mb-8 flex justify-center items-center">
+              <Link to="/recipes" className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white py-2 px-3 rounded-full hover:bg-gray-700 transition duration-300 items-center text-sm md:left-4 md:block hidden"
+               aria-label="Back"><FaArrowLeft />
               </Link>
+              <h2 className="text-3xl font-bold text-blue-800 mx-auto" style={{ flexGrow: 1, textAlign: 'center' }}>{recipe.title}</h2>
             </div>
-          </div>
-          <div className="md:w-1/2 flex items-center justify-center p-8">
-            <img src={images[`${recipe.title}.jpg`]} alt={recipe.title} className="w-full h-auto object-cover rounded-lg shadow-md" />
-          </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <img src={images[`${recipe.title}.jpg`]} alt={recipe.title} className="w-full h-auto rounded-lg shadow-md" />
+              <div className="flex flex-col justify-center">
+                <div className="mb-4">
+                <div className="text-left">
+                  <label htmlFor="numberOfDishes" className=" block text-lg font-bold mb-2">Number of Dishes: 
+                  <select id="numberOfDishes" className="border rounded-lg p-1 w-20" value={numberOfDishes} onChange={handleNumberOfDishesChange}>
+                    {[...Array(10).keys()].map(i => (
+                    // Mapping each number to an option element
+                    <option key={i} value={i + 1}>{i + 1}</option>
+                   ))}
+                  </select>
+                  </label>
+                </div>
+                <div className="text-left max-h-96 overflow-y-auto pr-4">
+                  <p className="mb-2"><strong>Allergies:</strong> {recipe.allergies}</p>
+                  <p className="mb-2"><strong>Difficulty:</strong> {recipe.difficulty}</p>
+                  <p className="mb-2"><strong>Ingredients:</strong></p>
+                  <ul className="list-disc list-inside mb-4">{formatIngredients()}</ul>
+                  <p className="mb-2"><strong>Instructions:</strong></p>
+                   <ol className="list-decimal list-inside mb-4">{formatInstructions()}</ol>
+                </div>
+                </div>
+                <div className="mt-4 flex justify-center">
+                  <Link to={`/recipes/${recipe.title}/steps`} className="bg-yellow-500 text-black px-6 py-2 mt-4 rounded-full hover:bg-yellow-600 transition duration-300">
+                    Cook by Steps
+                  </Link>
+                </div>
+              </div>
+            </div>
         </div>
-      </div>
     </div>
+
   );
 }
 

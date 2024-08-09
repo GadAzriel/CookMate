@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import recipesData from '../recipes.json';
 // Importing SpeechRecognition for handling voice commands
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { FaArrowLeft} from 'react-icons/fa';
 
 // Function to dynamically import all the images of a specified recipe
 const importAll = (r) => {
@@ -132,10 +133,10 @@ function Steps() {
   return (
     <div className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 font-tenor-sans min-h-screen flex flex-col items-center py-20 px-4 md:px-8">
       <div className="container-custom mx-auto px-4 text-center card-custom shadow-lg bg-white rounded-lg p-8">
-        <div className="flex justify-between items-center mb-4">
-          <Link to={`/recipes/${name}`} className="bg-gray-500 text-white text-center py-2 px-6 rounded-full hover:bg-gray-700 transition duration-300">
-            Back to Recipe
-          </Link>
+        <div className="relative mb-8 flex justify-center items-center">
+          <Link to={`/recipes/${name}`}  className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white py-2 px-3 rounded-full hover:bg-gray-700 transition duration-300 items-center text-sm md:left-4 md:block hidden"
+              aria-label="Back"><FaArrowLeft />
+            </Link>
           <h1 className="text-3xl font-bold text-blue-800">Step {currentStep + 1} of {recipe.instructions.length}</h1>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -168,14 +169,14 @@ function Steps() {
             <div className="mt-4 flex justify-center">
               <button
                 onClick={startListening}
-                className={`bg-gray-500 text-white px-6 py-2 mt-4 rounded-full hover:bg-blue-200 transition duration-300 w-full ${isListening ? 'hidden' : ''}`}
+                className={`bg-yellow-500 text-black px-6 py-2 mt-4 rounded-full hover:bg-yellow-600 transition duration-300 ${isListening ? 'hidden' : ''}`}
                 disabled={isListening}
               >
                 Start Voice Commands
               </button>
               <button
                 onClick={stopListening}
-                className={`bg-gray-500 text-white px-6 py-2 mt-4 rounded-full hover:bg-red-200 transition duration-300 w-full ${isListening ? '' : 'hidden'}`}
+                className={`bg-yellow-500 text-black px-6 py-2 mt-4 rounded-full hover:bg-red-200 transition duration-300 ${isListening ? '' : 'hidden'}`}
                 disabled={!isListening}
               >
                 Stop Voice Commands
