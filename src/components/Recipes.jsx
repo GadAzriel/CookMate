@@ -30,7 +30,7 @@ function Recipes() {
       <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden w-full max-w-screen-xl p-8">
         <div className="container mx-auto px-4">
         <div className="relative mb-8 flex justify-center items-center">
-      <Link to="/" className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white py-2 px-3 rounded-full hover:bg-gray-700 transition duration-300 items-center text-sm md:left-4 md:block hidden" aria-label="Back">
+      <Link to="/" className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white py-2 px-3 rounded-full hover:bg-gray-700 transition duration-300 items-center text-sm md:left-4" aria-label="Back">
         <FaArrowLeft />
       </Link>
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 drop-shadow-lg">
