@@ -133,7 +133,7 @@ function Steps() {
     <div className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 font-tenor-sans min-h-screen flex flex-col items-center py-20 px-4 md:px-8">
       <div className="container-custom mx-auto px-4 text-center card-custom shadow-lg bg-white rounded-lg p-8">
         <div className="flex justify-between items-center mb-4">
-          <Link to={`/recipes/${name}`} className="bg-blue-500 text-white px-4 py-2 mt-4 rounded-full shadow hover:bg-blue-200 transition duration-300">
+          <Link to={`/recipes/${name}`} className="bg-gray-500 text-white text-center py-2 px-6 rounded-full hover:bg-gray-700 transition duration-300">
             Back to Recipe
           </Link>
           <h1 className="text-3xl font-bold text-blue-800">Step {currentStep + 1} of {recipe.instructions.length}</h1>

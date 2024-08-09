@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import gad from '../assets/About_images/Gad.jpg';
 import yotam from '../assets/About_images/Yotam.jpg';
 import almog from '../assets/About_images/Almog.jpg';
@@ -8,8 +9,9 @@ function About() {
   return (
     <main className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 font-tenor-sans min-h-screen flex flex-col items-center py-20 px-4 md:px-8">
       <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden w-full max-w-screen-xl p-8">
-        <div className="flex flex-col items-center w-full mb-12">
-          <h1 className="text-5xl font-bold text-blue-800 dark:text-blue-300 mb-8">ABOUT COOKMATE</h1>
+      <div className="relative flex items-center mb-4">
+          <Link to="/" className="absolute left-0 bg-gray-500 text-white text-center py-2 px-6 rounded-full hover:bg-gray-700 transition duration-300">Back</Link>
+          <h1 className="text-5xl font-bold text-center w-full text-black-600">ABOUT COOKMATE</h1>
         </div>
         <div className="flex flex-col md:flex-row items-start">
           <div className="flex-1 text-center md:text-left mb-10 md:mb-0 md:pr-8">
