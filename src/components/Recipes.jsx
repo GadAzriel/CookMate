@@ -32,7 +32,7 @@ function Recipes() {
             <Link to="/" className="bg-gray-500 text-white text-center py-2 px-6 rounded-full hover:bg-gray-700 transition duration-300">
               Back
             </Link>
-            <h1 className="text-4xl md:text-5xl font-bold text-center flex-grow mx-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center flex-grow mx-4">
               CookMate's Recipes
             </h1>
           </div>
