@@ -58,13 +58,13 @@ function Recipes() {
   }, [currentRecipeIndex]);
 
   return (
-    <main className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 font-tenor-sans min-h-screen flex flex-col items-center py-20 px-4 md:px-8">
+    <main className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 font-tenor-sans min-h-screen flex flex-col items-center justify-center py-10 px-4 md:px-8">
       <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden w-full max-w-screen-xl p-4 md:p-8">
         <div className="container mx-auto px-4 text-center">
           <div className="relative mb-8 flex justify-center items-center">
             <Link
               to="/"
-              className="absolute left-0 bg-gray-500 text-white text-center py-2 px-3 rounded-full hover:bg-gray-700 transition duration-300 flex items-center text-sm"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white py-2 px-3 rounded-full hover:bg-gray-700 transition duration-300 flex items-center text-sm md:left-4"
               aria-label="Back"
             >
               <FaArrowLeft />
@@ -100,15 +100,15 @@ function Recipes() {
                       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                         {recipe.title}
                       </h2>
-                      <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4">
-                        <Link to={`/recipes/${recipe.title}/steps`}>
-                          <button className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition duration-300">
-                            Interactive Assistant
-                          </button>
-                        </Link>
+                      <div className="flex flex-col gap-4 mt-4">
                         <Link to={`/recipes/${recipe.title}`}>
                           <button className="bg-gray-700 text-white font-semibold px-6 py-3 rounded-full hover:bg-gray-800 transition duration-300">
                             View Full Recipe
+                          </button>
+                        </Link>
+                        <Link to={`/recipes/${recipe.title}/steps`}>
+                          <button className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition duration-300">
+                            Interactive Assistant
                           </button>
                         </Link>
                       </div>
