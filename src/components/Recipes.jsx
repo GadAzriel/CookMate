@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import recipesData from '../recipes.json';
 
 const importAll = (r) => {
   let images = {};
@@ -14,48 +13,40 @@ const images = importAll(require.context('../assets/Recipes_images', false, /\.(
 function Recipes() {
   const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [recipes, setRecipes] = useState([]);
   const navigate = useNavigate();
   const intervalRef = useRef(null);
 
-  useEffect(() => {
-    const fetchedRecipes = Object.values(recipesData.recipes);
-    setRecipes(fetchedRecipes);
-    startAutoSlide();
-    return () => stopAutoSlide();
-  }, []);
-
-  const startAutoSlide = () => {
-    stopAutoSlide();
-    intervalRef.current = setInterval(handleNextRecipe, 5000);
-  };
-
-  const stopAutoSlide = () => {
+  const stopAutoSlide = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
-  };
+  }, []);
 
-  const handleNextRecipe = () => {
+  const handleNextRecipe = useCallback(() => {
     if (!isAnimating) {
       setIsAnimating(true);
-      setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length);
+      setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % Object.keys(images).length);
       setTimeout(() => setIsAnimating(false), 500);
     }
-  };
+  }, [isAnimating]);
 
-  const handlePrevRecipe = () => {
+  const handlePrevRecipe = useCallback(() => {
     if (!isAnimating) {
       setIsAnimating(true);
-      setCurrentRecipeIndex((prevIndex) => (prevIndex - 1 + recipes.length) % recipes.length);
+      setCurrentRecipeIndex((prevIndex) => (prevIndex - 1 + Object.keys(images).length) % Object.keys(images).length);
       setTimeout(() => setIsAnimating(false), 500);
     }
-  };
+  }, [isAnimating]);
+
+  const startAutoSlide = useCallback(() => {
+    stopAutoSlide();
+    intervalRef.current = setInterval(handleNextRecipe, 5000);
+  }, [handleNextRecipe, stopAutoSlide]);
 
   useEffect(() => {
     startAutoSlide();
     return () => stopAutoSlide();
-  }, [currentRecipeIndex]);
+  }, [startAutoSlide, stopAutoSlide]);
 
   return (
     <main className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 font-tenor-sans min-h-screen flex flex-col items-center justify-center py-10 px-4 md:px-8">
@@ -64,7 +55,7 @@ function Recipes() {
           <div className="relative mb-8 flex justify-center items-center">
             <Link
               to="/"
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white py-2 px-3 rounded-full hover:bg-gray-700 transition duration-300 flex items-center text-sm md:left-4"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white py-2 px-3 rounded-full hover:bg-gray-700 transition duration-300 flex items-center text-sm md:left-4 md:block hidden"
               aria-label="Back"
             >
               <FaArrowLeft />
@@ -86,27 +77,27 @@ function Recipes() {
                 className="flex transition-transform duration-500 ease-in-out transform w-full"
                 style={{ transform: `translateX(-${currentRecipeIndex * 100}%)` }}
               >
-                {recipes.map((recipe, index) => (
+                {Object.keys(images).map((key, index) => (
                   <div key={index} className="flex flex-col items-center min-w-full p-4">
                     <div className="w-full p-4 flex justify-center">
                       <img
-                        src={images[`${recipe.title}.jpg`]}
-                        alt={recipe.title}
+                        src={images[key]}
+                        alt={key.replace('.jpg', '')}
                         className="w-full max-w-md h-auto object-contain rounded-lg shadow-lg cursor-pointer"
-                        onClick={() => navigate(`/recipes/${recipe.title}`)}
+                        onClick={() => navigate(`/recipes/${key.replace('.jpg', '')}`)}
                       />
                     </div>
                     <div className="text-center w-full mt-4">
                       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                        {recipe.title}
+                        {key.replace('.jpg', '')}
                       </h2>
                       <div className="flex flex-col gap-4 mt-4">
-                        <Link to={`/recipes/${recipe.title}`}>
-                          <button className="bg-gray-700 text-white font-semibold px-6 py-3 rounded-full hover:bg-gray-800 transition duration-300">
+                        <Link to={`/recipes/${key.replace('.jpg', '')}`}>
+                          <button className="bg-gray-700 text-white font-semibold px-6 py-3 rounded-full hover:bg-gray-800 transition duration-300 dark:bg-gray-900 dark:hover:bg-gray-700">
                             View Full Recipe
                           </button>
                         </Link>
-                        <Link to={`/recipes/${recipe.title}/steps`}>
+                        <Link to={`/recipes/${key.replace('.jpg', '')}/steps`}>
                           <button className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-600 transition duration-300">
                             Interactive Assistant
                           </button>
@@ -125,7 +116,7 @@ function Recipes() {
               </button>
             </div>
             <div className="flex justify-center mt-4">
-              {recipes.map((_, index) => (
+              {Object.keys(images).map((_, index) => (
                 <span
                   key={index}
                   className={`inline-block w-2 h-2 mx-1 rounded-full ${index === currentRecipeIndex ? 'bg-gray-900 dark:bg-gray-300' : 'bg-gray-500 dark:bg-gray-700'}`}
