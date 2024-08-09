@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import recipesData from '../recipes.json';
+import { FaArrowLeft } from 'react-icons/fa'; // Importing an icon for the back button
 
 // Function to dynamically import all images
 const importAll = (r) => {
@@ -29,10 +30,10 @@ function Recipes() {
       <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden w-full max-w-screen-xl p-8">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-4">
-            <Link to="/" className="bg-gray-500 text-white text-center py-2 px-6 rounded-full hover:bg-gray-700 transition duration-300">
-              Back
+            <Link to="/" className="bg-gray-500 text-white text-center py-2 px-3 md:px-6 rounded-full hover:bg-gray-700 transition duration-300 flex items-center">
+              <FaArrowLeft className="mr-2" /> <span className="hidden sm:inline">Back</span>
             </Link>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center flex-grow mx-4">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-center flex-grow mx-4">
               CookMate's Recipes
             </h1>
           </div>
