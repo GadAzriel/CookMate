@@ -43,7 +43,7 @@ function Recipes() {
                   <img src={images[`${recipe.title}.jpg`]} alt={recipe.title} className="w-full h-48 object-cover" />
                 </div>
                 <div className="p-6">
-                  <h2 className="text-xl font-bold mb-2 text-black-700 text-center">{recipe.title}</h2>
+                  <h2 className="text-xl font-bold mb-2 text-bla-700 text-center">{recipe.title}</h2>
                   <Link to={`/recipes/${recipe.title}/steps`}>
                     <button className="bg-gray-500 text-white px-6 py-2 mt-4 rounded-full hover:bg-blue-200 transition duration-300 w-full">
                       Click for interactive assistant
@@ -60,3 +60,4 @@ function Recipes() {
 }
 
 export default Recipes;
+
