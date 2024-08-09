@@ -35,7 +35,7 @@ CookMate is an interactive web application designed to make cooking a seamless a
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/CookMate.git
+   git clone https://github.com/GadAzriel/CookMate.git
 2. Navigate to the project directory:
    ```bash
    cd cookmate
