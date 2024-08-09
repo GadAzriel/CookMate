@@ -83,25 +83,19 @@ img {
   color: #2d3748;
 }
 
-.button-custom:hover {
-  background-color: #2563eb;
-  transform: scale(1.05);
+/* Default h1 styles */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2d3748; /* Light mode color */
 }
 
-.card-custom {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Default h2 styles */
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #2d3748; /* Light mode color */
 }
-
-.container-custom {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-
 
 body.dark {
   background-color: #2d3748;
@@ -125,13 +119,40 @@ body.dark .select{
   background-color: #2d3748 !important;
 }
 
-
 body.dark a {
   color: white;
 }
 
 body.dark a:hover {
   color: #63b3ed;
+}
+
+/* Dark mode h1 styles */
+body.dark h1 {
+  color: #1dac4d; /* Dark mode color */
+}
+
+/* Dark mode h2 styles */
+body.dark h2 {
+  color: #dfbb1a; /* Dark mode color */
+}
+
+.button-custom:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+.card-custom {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container-custom {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 /* Flex utilities */
@@ -173,4 +194,21 @@ body.dark a:hover {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+/* Default select styles */
+select {
+  border: 1px solid #cbd5e0;
+  background-color: #ffffff;
+  color: #2d3748;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  width: 5rem; /* Equivalent to 20 tailwind units */
+}
+
+/* Dark mode select styles */
+body.dark select {
+  border: 1px solid #4a5568;
+  background-color: #2d3748;
+  color: #f7fafc;
 }

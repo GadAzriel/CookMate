@@ -59,7 +59,7 @@ const Header = () => {
           <Link to="/about" className="text-gray-800 hover:text-blue-500 dark:text-white" onClick={toggleMenu}>About</Link>
           <button
             onClick={() => { toggleDarkMode(); toggleMenu(); }}
-            className="text-gray-800 hover:text-blue-500 dark:text-white"
+            className="text-gray-800 hover:text-blue-500 dark:text-white cursor-pointer bg-transparent border-none"
           >
             {isDarkMode ? 'Light Mode' : 'Dark Mode'}
           </button>

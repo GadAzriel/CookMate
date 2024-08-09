@@ -56,7 +56,7 @@ function RecipeDetail() {
               <Link to="/recipes" className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white py-2 px-3 rounded-full hover:bg-gray-700 transition duration-300 items-center text-sm md:left-4 md:block hidden"
                aria-label="Back"><FaArrowLeft />
               </Link>
-              <h2 className="text-3xl font-bold text-blue-800 mx-auto" style={{ flexGrow: 1, textAlign: 'center' }}>{recipe.title}</h2>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 drop-shadow-lg" style={{ flexGrow: 1, textAlign: 'center' }}>{recipe.title}</h1>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <img src={images[`${recipe.title}.jpg`]} alt={recipe.title} className="w-full h-auto rounded-lg shadow-md" />
