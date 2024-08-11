@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import recipes from '../assets/recipes.json';
+import recipes from '../assets/recipes.json'; // Importing the recipes data from a JSON file
 import background from '../assets/videos/Background.jpg'; // Importing the background image
 
 const RecipeDetail = () => {
@@ -39,6 +39,7 @@ const RecipeDetail = () => {
             controls 
             className="w-full max-w-lg mx-auto aspect-video rounded-lg shadow-md"
           >
+             {/* Dynamically loading the video file based on the recipe title */}
             <source src={require(`../assets/videos/${recipe.title}.mp4`)} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -49,10 +50,10 @@ const RecipeDetail = () => {
           <span className="text-lg font-semibold">Number of Servings:</span>
           <input
             type="number"
-            value={servings}
-            onChange={(e) => setServings(e.target.value)}
+            value={servings} // The current value of servings
+            onChange={(e) => setServings(e.target.value)} // Update the state when the user changes the number of servings
             className="ml-2 p-2 border border-gray-400 rounded w-20 dark:bg-gray-700 dark:border-gray-600"
-            min="1"
+            min="1" // Ensure the number of servings is at least 1
           />
         </label>
 
@@ -61,6 +62,7 @@ const RecipeDetail = () => {
         <ul className="list-disc list-inside mb-4">
           {recipe.ingredients.map((ingredient, index) => (
             <li key={index}>
+              {/* Scaling the amount of each ingredient based on the number of servings */}
               {scaleIngredient(recipe.amounts[index])} {ingredient}
             </li>
           ))}

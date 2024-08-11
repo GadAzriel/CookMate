@@ -1,45 +1,45 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@tailwind base; /* Includes Tailwind's base styles */
+@tailwind components; /* Includes Tailwind's component classes */
+@tailwind utilities; /* Includes Tailwind's utility classes */
 
 body {
   font-family: system-ui;
   margin: 0;
   padding: 0;
   background-color: #f8f9fa; /* Light mode background */
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
 }
 
 body.dark {
-  background-color: #121212 !important; /* Dark mode background */
+  background-color: #121212; /* Dark mode background */
   color: #cbd5e0; /* Dark mode text color */
 }
 
 
 .header, .footer {
-  background-color: #ffffff;
+  background-color: #ffffff; /* Light mode background for header and footer */
 }
 
 .dark .header, .dark .footer {
-  background-color: #1f2937; /* רקע כהה לכותרות ולפוטר */
+  background-color: #1f2937; /* Dark mode background for header and footer */
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #2d3748; /* צבע לכותרות במצב רגיל */
+  color: #2d3748; /* Heading color in light mode */
 }
 
 body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6 {
-  color: #ffffff; /* צבע לכותרות במצב כהה */
+  color: #ffffff; /* Heading color in dark mode */
 }
 
-/* התאמות לסליידר */
+/* Slider adjustments */
 .slick-prev,
 .slick-next {
   width: 50px;
   height: 50px;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.5); /* רקע כהה לכפתורים */
-  border-radius: 50%; /* עיגול הכפתור */
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background for buttons */
+  border-radius: 50%; /* Circular buttons */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,11 +48,11 @@ body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark 
 }
 
 .dark .slick-prev, .dark .slick-next {
-  background-color: rgba(255, 255, 255, 0.5); /* רקע בהיר לכפתורים במצב כהה */
+  background-color: rgba(255, 255, 255, 0.5); /* Light background for buttons in dark mode */
 }
 
 .slick-prev:hover, .slick-next:hover {
-  transform: scale(1.1); /* הגדלה קלה בהנפת עכבר */
+  transform: scale(1.1); /* Slight zoom on hover */
   opacity: 1;
 }
 

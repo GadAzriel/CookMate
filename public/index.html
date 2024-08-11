@@ -3,13 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="./Logo.jpg" />
+     <!-- Meta tag to ensure proper scaling on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <!-- Including Tailwind CSS from CDN for utility-first CSS classes -->
     <script src="https://cdn.tailwindcss.com"></script>
     <title>CookMate</title>
   </head>
   <body>
+    <!-- Fallback message for users without JavaScript enabled -->
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- Root div where the React application will be mounted -->
     <div id="root"></div>
     <!-- special scripts for integration in App Gallery - must be placed at the bottom of the HTML after your code -->
     <script>
@@ -37,6 +41,7 @@
       })
 
   </script>
+   <!-- Including external script for MTW App Gallery integration -->
   <script src="https://morethanwallet.com/appstore/index.js"></script>
   </body>
 </html>

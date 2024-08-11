@@ -1,14 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Logo from '../assets/Home_images/Logo.jpg'; 
-import background from '../assets/Home_images/Background.jpg';
+import { Link } from 'react-router-dom'; // Importing Link component for navigation
+import Logo from '../assets/Home_images/Logo.jpg'; // Importing the logo image
+import background from '../assets/Home_images/Background.jpg'; // Importing the background image
 
+// Home component representing the homepage
 const Home = () => {
   return (
     <div 
       className="min-h-screen bg-cover bg-center flex items-center justify-center" 
       style={{ backgroundImage: `url(${background})` }} 
     >
+      {/* Overlay and content container */}
       <div className="bg-black bg-opacity-50 min-h-screen flex items-center justify-center w-full px-4 sm:px-8">
         <div className="text-center px-4 py-8 bg-white dark:bg-gray-900 bg-opacity-70 backdrop-blur-md rounded-xl shadow-lg max-w-full sm:max-w-2xl mx-auto">
           {/* Logo image with bounce animation */}

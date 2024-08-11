@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",  // This ensures that Tailwind CSS scans all the files in the src directory with the specified extensions (js, jsx, ts, tsx) for class names
+    "./src/**/*.{js,jsx,ts,tsx}",  // Scans all JS, JSX, TS, TSX files in 'src' for Tailwind classes
   ],
-  darkMode: 'class',  // Enables dark mode, which you can toggle by adding a 'dark' class in your HTML
+  darkMode: 'class',  // Enables dark mode via the 'dark' class
   theme: {
     extend: {},
   },

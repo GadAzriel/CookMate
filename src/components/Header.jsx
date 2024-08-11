@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Hook to programmatically navigate between routes
 import { FaSun, FaMoon } from 'react-icons/fa'; // icons
-import logo from '../assets/Home_images/Logo.jpg';
+import logo from '../assets/Home_images/Logo.jpg'; // Importing the logo image
 
 const Header = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook to programmatically navigate between routes
   const [isDarkMode, setIsDarkMode] = useState(() => {
     // Initialize state from localStorage or default to false
     return localStorage.getItem('isDarkMode') === 'true';
   });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Effect hook to apply dark mode class to the body element based on the state
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add('dark');
@@ -21,10 +22,12 @@ const Header = () => {
     localStorage.setItem('isDarkMode', isDarkMode);
   }, [isDarkMode]);
 
+   // Function to toggle dark mode state
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  // Function to toggle mobile menu open/close state
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };

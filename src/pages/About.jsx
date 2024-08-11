@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import gad from '../assets/About_images/Gad.jpg';
+import { Link } from 'react-router-dom'; // Importing Link for navigation
+import gad from '../assets/About_images/Gad.jpg'; // Importing team member images
 import yotam from '../assets/About_images/Yotam.jpg';
 import almog from '../assets/About_images/Almog.jpg';
 import tomer from '../assets/About_images/Tomer.jpg';
-import background from '../assets/About_images/Background.jpg'; 
+import background from '../assets/About_images/Background.jpg'; // Importing background image
 
 function About() {
   return (
