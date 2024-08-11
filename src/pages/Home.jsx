@@ -1,30 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/Home_images/Logo.jpg'; 
 import background from '../assets/Home_images/Background.jpg';
 
 const Home = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle('dark');
-  };
-
   return (
     <div 
-      className={`min-h-screen bg-cover bg-center flex items-center justify-center ${isDarkMode ? 'dark' : ''}`}
+      className="min-h-screen bg-cover bg-center flex items-center justify-center" // Fixed className syntax
       style={{ backgroundImage: `url(${background})` }} // Corrected background image style
     >
-      <div className="absolute top-4 right-4">
-        <button
-          onClick={toggleDarkMode}
-          className="bg-blue-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-600 transition duration-300"
-        >
-          {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-        </button>
-      </div>
-
       <div className="bg-black bg-opacity-50 min-h-screen flex items-center justify-center w-full px-4 sm:px-8">
         <div className="text-center px-4 py-8 bg-white dark:bg-gray-900 bg-opacity-70 backdrop-blur-md rounded-xl shadow-lg max-w-full sm:max-w-2xl mx-auto">
           <img src={Logo} alt="CookMate Logo" className="mx-auto mb-6 w-24 h-24 sm:w-40 sm:h-40 animate-bounce" />

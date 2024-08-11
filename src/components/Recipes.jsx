@@ -1,5 +1,5 @@
 import React from 'react';
-import Slider from 'react-slick';
+import Slider from 'react-slick'; //React-slick for the carousel
 import { Link } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -17,6 +17,7 @@ const importAll = (r) => {
 // Importing all recipe images from the specified directory
 const images = importAll(require.context('../assets/Recipes_images', false, /\.(png|jpe?g|svg)$/));
 
+// Custom component for the "Next" arrow in the carousel
 const NextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
@@ -28,6 +29,7 @@ const NextArrow = (props) => {
   );
 };
 
+// Custom component for the "Previous" arrow in the carousel
 const PrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
@@ -39,12 +41,13 @@ const PrevArrow = (props) => {
   );
 };
 
+// The settings object is a configuration object that you pass to the Slider component
 const Recipes = () => {
   const recipeList = recipes.recipes;
 
   const settings = {
-    dots: true,
-    infinite: true,
+    dots: true, // Enables the display of navigation dots below the carousel
+    infinite: true, // Enables infinite scrolling, so the carousel loops back to the beginning when it reaches the end
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -101,16 +104,16 @@ const Recipes = () => {
                 <div className="p-4 absolute bottom-0 left-0 right-0 z-20 bg-black bg-opacity-50 dark:bg-gray-900 dark:bg-opacity-75">
                   <h2 className="text-2xl font-bold text-white">{recipe.title}</h2>
                   <div className="flex items-center mt-2">
-                    <span
-                      className={`inline-block px-3 py-1 text-sm font-semibold text-white bg-${
+                  <span
+                      className={`inline-block px-3 py-1 text-sm font-semibold text-white rounded-full ${
                         recipe.difficulty === 'Beginner'
-                          ? 'green'
+                          ? 'bg-green-500'
                           : recipe.difficulty === 'Easy'
-                          ? 'blue'
+                          ? 'bg-blue-500'
                           : recipe.difficulty === 'Intermediate'
-                          ? 'orange'
-                          : 'red'
-                      }-500 rounded-full`}
+                          ? 'bg-orange-500'
+                          : 'bg-red-500'
+                      }`}
                     >
                       {recipe.difficulty}
                     </span>
