@@ -29,7 +29,7 @@ function Steps() {
       setRecipe(foundRecipe);
       const totalTime = foundRecipe.duration.reduce((acc, time) => acc + time, 0);
       setTotalDuration(totalTime);
-      setTimer(foundRecipe.duration[0]);
+      setTimer(foundRecipe.duration[0] * 60); // Set timer in seconds (duration is assumed to be in minutes)
     } else {
       console.error(`Recipe with title "${name}" not found.`);
     }
@@ -37,14 +37,14 @@ function Steps() {
 
   useEffect(() => {
     if (recipe) {
-      setTimer(recipe.duration[currentStep]);
+      setTimer(recipe.duration[currentStep] * 60); // Convert minutes to seconds
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
       intervalRef.current = setInterval(() => {
         setTimer(prevTimer => {
           if (prevTimer > 0) {
-            return prevTimer - 1;
+            return prevTimer - 1; // Decrease the timer by 1 second
           } else {
             clearInterval(intervalRef.current);
             return 0;
@@ -111,10 +111,10 @@ function Steps() {
   const calculateProgress = () => {
     let timePassed = 0;
     for (let i = 0; i < currentStep; i++) {
-      timePassed += recipe?.duration[i];
+      timePassed += recipe?.duration[i] * 60; // Convert minutes to seconds
     }
-    timePassed += (recipe?.duration[currentStep] - timer);
-    return Math.round((timePassed / totalDuration) * 100);
+    timePassed += (recipe?.duration[currentStep] * 60 - timer); // Calculate remaining time in seconds
+    return Math.round((timePassed / (totalDuration * 60)) * 100); // Calculate progress percentage
   };
 
   const formatTime = (seconds) => {
