@@ -99,7 +99,7 @@
                 "Place a spoonful of filling on each dough square, fold over, and seal the edges.",
                 "Cook the ravioli in boiling water for 3-4 minutes, then serve with marinara sauce."
             ],
-            "duration": [10, 10, 5, 15, 10]
+            "duration": [30, 10, 5, 15, 10]
         },
         "5": {
             "title": "Falafel",
