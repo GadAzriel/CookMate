@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import recipesData from '../recipes.json';
+import recipesData from '../assets/recipes.json';
 // Importing SpeechRecognition for handling voice commands
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import { FaArrowLeft} from 'react-icons/fa';
+
 
 // Function to dynamically import all the images of a specified recipe
 const importAll = (r) => {
@@ -132,13 +132,11 @@ function Steps() {
 
   return (
     <div className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 font-tenor-sans min-h-screen flex flex-col items-center py-20 px-4 md:px-8">
-      <div className="container-custom mx-auto px-4 text-center card-custom shadow-lg bg-white rounded-lg p-8">
-        <div className="relative mb-8 flex justify-center items-center">
-          <Link to={`/recipes/${name}`}  className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white py-2 px-3 rounded-full hover:bg-gray-700 transition duration-300 items-center text-sm md:left-4 md:block hidden"
-              aria-label="Back"><FaArrowLeft />
-            </Link>
-          <h1 className="text-3xl font-bold text-blue-800">Step {currentStep + 1} of {recipe.instructions.length}</h1>
-        </div>
+      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 dark:bg-gray-800">
+        <Link to="/recipes" className="text-blue-500 hover:underline mb-4 inline-block">
+          &larr; Back to Recipes
+        </Link>
+        <h1 className="text-4xl font-bold mb-4">Step {currentStep + 1} of {recipe.instructions.length}</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <img src={getStepImage(recipe.title, currentStep)} alt={`${recipe.title} step ${currentStep + 1}`} className="w-full h-auto rounded-lg shadow-md" />
           <div className="flex flex-col justify-center">
@@ -167,16 +165,16 @@ function Steps() {
               </button>
             </div>
             <div className="mt-4 flex justify-center">
-              <button
+            <button
                 onClick={startListening}
-                className={`bg-yellow-500 text-black px-6 py-2 mt-4 rounded-full hover:bg-yellow-600 transition duration-300 ${isListening ? 'hidden' : ''}`}
+                className={`bg-gray-500 text-white px-6 py-2 mt-4 rounded-full hover:bg-blue-200 transition duration-300 w-full ${isListening ? 'hidden' : ''}`}
                 disabled={isListening}
               >
                 Start Voice Commands
               </button>
               <button
                 onClick={stopListening}
-                className={`bg-yellow-500 text-black px-6 py-2 mt-4 rounded-full hover:bg-red-200 transition duration-300 ${isListening ? '' : 'hidden'}`}
+                className={`bg-gray-500 text-white px-6 py-2 mt-4 rounded-full hover:bg-red-200 transition duration-300 w-full ${isListening ? '' : 'hidden'}`}
                 disabled={!isListening}
               >
                 Stop Voice Commands

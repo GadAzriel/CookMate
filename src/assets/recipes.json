@@ -1,0 +1,235 @@
+{
+    "recipes": {
+        "1": {
+            "title": "Pizza",
+            "allergies": "Gluten",
+            "difficulty": "Beginner",
+            "ingredients": [
+                "cups all-purpose flour",
+                "teaspoons sugar",
+                "teaspoons active dry yeast",
+                "teaspoons salt",
+                "tablespoons olive oil",
+                "cups warm water",
+                "cup tomato sauce",
+                "cups shredded mozzarella cheese",
+                "sliced pepperoni",
+                "sliced mushrooms",
+                "sliced bell peppers"
+            ],
+            "amounts": [3, 2, 2, 1, 2, 1, 0.5, 2, 0.5, 0.5, 0.5],
+            "instructions": [
+                "In a large bowl, mix flour, sugar, yeast, and salt.",
+                "Add olive oil and warm water, and knead the dough until smooth.",
+                "Cover the dough and let it rise for 1 hour and preheat the oven to 475°F (245°C).",
+                "Roll out the dough on a floured surface to your desired thickness.",
+                "Spread tomato sauce over the dough.",
+                "Sprinkle mozzarella cheese evenly on top.",
+                "Add sliced pepperoni, mushrooms, and bell peppers as toppings.",
+                "Bake in the preheated oven for 12-15 minutes, or until the crust is golden and the cheese is bubbly."
+            ],
+            "duration": [10, 10, 60, 10, 5, 5, 5, 15]
+        },
+        "2": {
+            "title": "Bagel Toast",
+            "allergies": "Gluten, Dairy",
+            "difficulty": "Easy",
+            "ingredients": [
+                "bagels, sliced in half",
+                "tablespoons butter",
+                "slices cheese (like cheddar, mozzarella, or Swiss)",
+                "slices tomato",
+                "slices turkey or ham (optional)",
+                "teaspoon salt",
+                "teaspoon black pepper"
+            ],
+            "amounts": [2, 2, 4, 4, 4, 1, 0.5],
+            "instructions": [
+                "Spread butter on each half of the bagels.",
+                "Place slices of cheese, tomato, and turkey or ham on one half of each bagel.",
+                "Season with salt and pepper.",
+                "Top with the other half of the bagel to form a sandwich.",
+                "Grill the bagels in a panini press or on a griddle until the cheese is melted and the bagels are golden brown."
+            ],
+            "duration": [5, 5, 2, 2, 5]
+        },
+        "3": {
+            "title": "Steak",
+            "allergies": "None",
+            "difficulty": "Easy",
+            "ingredients": [
+                "steak cuts (ribeye, sirloin, or your choice)",
+                "tablespoon olive oil",
+                "teaspoon salt",
+                "teaspoon black pepper",
+                "cloves garlic, crushed",
+                "tablespoons butter",
+                "sprigs fresh thyme or rosemary"
+            ],
+            "amounts": [2, 1, 1, 1, 2, 2, 2],
+            "instructions": [
+                "Season the steak with salt, black pepper, and olive oil on both sides.",
+                "Heat a skillet over high heat and sear the steak for 2-3 minutes on each side.",
+                "Add crushed garlic, butter, and fresh herbs to the skillet.",
+                "Cook the steak to your preferred doneness, basting with the butter mixture.",
+                "Let the steak rest for 5 minutes before serving."
+            ],
+            "duration": [5, 5, 2, 8, 5]
+        },
+        "4": {
+            "title": "Ravioli",
+            "allergies": "Gluten, Dairy",
+            "difficulty": "Intermediate",
+            "ingredients": [
+                "cups all-purpose flour",
+                "eggs",
+                "tablespoons olive oil",
+                "teaspoon salt",
+                "cups ricotta cheese",
+                "cup grated Parmesan cheese",
+                "tablespoon chopped fresh basil",
+                "clove garlic, minced",
+                "jar marinara sauce"
+            ],
+            "amounts": [2, 2, 2, 1, 1, 0.5, 1, 1, 1],
+            "instructions": [
+                "Mix flour, eggs, olive oil, and salt to form a smooth dough, then rest for 30 minutes.",
+                "Roll out the dough thinly and cut into squares.",
+                "Mix ricotta, Parmesan, basil, and garlic for the filling.",
+                "Place a spoonful of filling on each dough square, fold over, and seal the edges.",
+                "Cook the ravioli in boiling water for 3-4 minutes, then serve with marinara sauce."
+            ],
+            "duration": [10, 10, 5, 15, 10]
+        },
+        "5": {
+            "title": "Falafel",
+            "allergies": "None",
+            "difficulty": "Intermediate",
+            "ingredients": [
+                "cups dried chickpeas, soaked overnight",
+                "onion, chopped",
+                "cloves garlic, minced",
+                "cup fresh parsley, chopped",
+                "cup fresh cilantro, chopped",
+                "teaspoon ground cumin",
+                "teaspoon ground coriander",
+                "teaspoon baking powder",
+                "teaspoon salt",
+                "teaspoon black pepper",
+                "oil for frying"
+            ],
+            "amounts": [2, 1, 3, 0.5, 0.5, 1, 1, 1, 1, 0.5, 4],
+            "instructions": [
+                "Blend soaked chickpeas, onion, garlic, parsley, cilantro, cumin, coriander, baking powder, salt, and pepper until a coarse mixture forms.",
+                "Shape the mixture into small balls or patties.",
+                "Heat oil in a deep pan over medium-high heat.",
+                "Fry the falafel in batches until golden brown and crispy.",
+                "Drain on paper towels and serve hot with pita and your choice of toppings."
+            ],
+            "duration": [10, 10, 5, 15, 5]
+        },
+        "6": {
+            "title": "Croissant",
+            "allergies": "Gluten, Dairy",
+            "difficulty": "Advanced",
+            "ingredients": [
+                "cups all-purpose flour",
+                "tablespoons sugar",
+                "teaspoon salt",
+                "teaspoons active dry yeast",
+                "cup warm milk",
+                "cups unsalted butter, chilled",
+                "egg, beaten"
+            ],
+            "amounts": [4, 3, 1, 2, 1, 1.5, 1],
+            "instructions": [
+                "Mix flour, sugar, salt, yeast, and warm milk to form a dough, then refrigerate for 1 hour.",
+                "Roll out the dough and layer with chilled butter, then fold and roll out multiple times.",
+                "Refrigerate the dough between each fold for 30 minutes.",
+                "Roll out the dough, cut into triangles, and roll each into a croissant shape.",
+                "Brush with beaten egg and bake at 375°F (190°C) for 15-20 minutes until golden brown."
+            ],
+            "duration": [15, 20, 90, 15, 20]
+        },
+        "7": {
+            "title": "Schnitzel",
+            "allergies": "Gluten, Eggs",
+            "difficulty": "Easy",
+            "ingredients": [
+                "boneless chicken breasts, pounded thin",
+                "cups all-purpose flour",
+                "eggs, beaten",
+                "cups breadcrumbs",
+                "teaspoon salt",
+                "teaspoon black pepper",
+                "teaspoon paprika",
+                "oil for frying"
+            ],
+            "amounts": [4, 1, 2, 2, 1, 1, 1, 4],
+            "instructions": [
+                "Season the chicken breasts with salt, pepper, and paprika.",
+                "Coat each chicken breast in flour, then dip in beaten eggs and coat with breadcrumbs.",
+                "Heat oil in a frying pan over medium heat.",
+                "Fry the chicken breasts for 3-4 minutes on each side until golden brown and cooked through.",
+                "Drain on paper towels and serve hot with lemon wedges or your favorite side dish."
+            ],
+            "duration": [5, 10, 5, 8, 2]
+        },
+        "8": {
+            "title": "Hamburger",
+            "allergies": "Gluten, Dairy (if cheese is added)",
+            "difficulty": "Easy",
+            "ingredients": [
+                "pounds ground beef",
+                "teaspoon salt",
+                "teaspoon black pepper",
+                "teaspoon garlic powder",
+                "hamburger buns",
+                "slices cheese (optional)",
+                "slices tomato",
+                "leaves lettuce",
+                "tablespoons mayonnaise",
+                "tablespoons ketchup",
+                "tablespoons mustard"
+            ],
+            "amounts": [1, 1, 0.5, 0.5, 4, 4, 4, 4, 4, 4, 2],
+            "instructions": [
+                "In a bowl, mix ground beef with salt, pepper, and garlic powder. Form into patties.",
+                "Heat a grill or pan over medium-high heat and cook the patties for 4-5 minutes on each side, or until desired doneness.",
+                "Toast the hamburger buns on the grill or in a toaster.",
+                "Assemble the burgers: place the patty on the bottom bun, add cheese if desired, then top with tomato, lettuce, mayonnaise, ketchup, and mustard.",
+                "Place the top bun on the burger and serve hot."
+            ],
+            "duration": [5, 10, 2, 5, 2]
+        },
+
+        "9": {
+            "title": "Salad",
+            "allergies": "Dairy",
+            "difficulty": "Easy",
+            "ingredients": [
+                "large tomatoes, chopped",
+                "cucumbers, chopped",
+                "red onion, thinly sliced",
+                "green bell pepper, sliced",
+                "cup Kalamata olives",
+                "cup feta cheese, crumbled",
+                "tablespoons olive oil",
+                "tablespoon red wine vinegar",
+                "teaspoon dried oregano",
+                "teaspoon salt",
+                "teaspoon black pepper"
+            ],
+            "amounts": [2, 2, 1, 1, 0.5, 0.5, 3, 1, 1, 1, 0.5],
+            "instructions": [
+                "In a large bowl, combine chopped tomatoes, cucumbers, red onion, and green bell pepper.",
+                "Add Kalamata olives and crumbled feta cheese.",
+                "Drizzle with olive oil and red wine vinegar.",
+                "Sprinkle with dried oregano, salt, and black pepper.",
+                "Toss gently and serve immediately."
+            ],
+            "duration": [10, 5, 2, 2, 3]
+        
+        }
+    }
+}

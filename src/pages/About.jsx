@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa';
 import gad from '../assets/About_images/Gad.jpg';
 import yotam from '../assets/About_images/Yotam.jpg';
 import almog from '../assets/About_images/Almog.jpg';
@@ -8,16 +7,13 @@ import tomer from '../assets/About_images/Tomer.jpg';
 
 function About() {
   return (
-    <main className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 font-tenor-sans min-h-screen flex flex-col items-center py-20 px-4 md:px-8">
-    <div className="container-custom mx-auto px-4 text-center card-custom shadow-lg bg-white rounded-lg p-8">
-          <div className="relative mb-8 flex justify-center items-center">
-            <Link to="/" className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white py-2 px-3 rounded-full hover:bg-gray-700 transition duration-300 items-center text-sm md:left-4 md:block hidden"
-             aria-label="Back"><FaArrowLeft />
-            </Link>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 drop-shadow-lg">
-              About CookMate
-            </h1>
-          </div>
+    <main className="min-h-screen bg-gray-100 p-4 md:p-8 dark:bg-gray-900 dark:text-white">
+    <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 dark:bg-gray-800">
+        <Link to="/" className="text-blue-500 hover:underline mb-4 inline-block">
+          &larr; Back Home
+        </Link>
+        <h1 className="text-4xl font-bold mb-4">About CookMate</h1>
+
         <div className="flex flex-col md:flex-row items-start">
           <div className="flex-1 text-center md:text-left mb-10 md:mb-0 md:pr-8">
             <h2 className="text-2xl font-bold text-black dark:text-white mb-4">Welcome to CookMate!</h2>
