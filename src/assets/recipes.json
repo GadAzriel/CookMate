@@ -149,7 +149,7 @@
                 "Roll out the dough, cut into triangles, and roll each into a croissant shape.",
                 "Brush with beaten egg and bake at 375°F (190°C) for 15-20 minutes until golden brown."
             ],
-            "duration": [15, 20, 90, 15, 20]
+            "duration": [15, 20, 30, 90, 20]
         },
         "7": {
             "title": "Schnitzel",
@@ -228,7 +228,7 @@
                 "Sprinkle with dried oregano, salt, and black pepper.",
                 "Toss gently and serve immediately."
             ],
-            "duration": [10, 5, 2, 2, 3]
+            "duration": [7, 5, 2, 2, 3]
         
         }
     }
