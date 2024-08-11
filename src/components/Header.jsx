@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import logo from '../assets/Home_images/Logo.jpg'; 
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,6 +31,10 @@ const Header = () => {
   return (
     <header className="bg-white shadow-md fixed w-full z-10 dark:bg-gray-900">
       <div className="container mx-auto flex justify-between items-center py-4 px-4 md:px-8">
+        <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
+          <img src={logo} alt="CookMate Logo" className="w-12 h-12 mr-2" />
+          <h1 className="text-xl font-bold text-gray-800 dark:text-white">CookMate</h1>
+        </div>
         <nav className="hidden md:flex space-x-6">
           <Link to="/" className="text-gray-800 hover:text-blue-500 dark:text-white font-bold">Home</Link>
           <Link to="/recipes" className="text-gray-800 hover:text-blue-500 dark:text-white font-bold">Recipes</Link>

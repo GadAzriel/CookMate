@@ -72,16 +72,16 @@ const Recipes = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 md:p-8 dark:bg-gray-900 dark:text-white">
-      <h1 className="text-5xl font-bold text-center mb-12 text-green-600">Our Delicious Recipes</h1>
+      <h1 className="text-5xl font-bold text-center mb-12 text-green-600 dark:text-green-400">Our Delicious Recipes</h1>
       <Slider {...settings}>
         {Object.keys(recipeList).map((id) => {
           const recipe = recipeList[id];
-          const imageName = `${recipe.title.replace(/\s+/g, '')}.jpg`; // Adjusted for possible spaces in filenames
+          const imageName = `${recipe.title.replace(/\s+/g, '')}.jpg`;
           const image = images[imageName];
 
           if (!image) {
             console.error(`Image not found: ${imageName}`);
-            return null; // Or display a default image
+            return null;
           }
 
           return (
@@ -96,9 +96,9 @@ const Recipes = () => {
                     alt={recipe.title}
                     className="w-full h-56 object-cover transform transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-75"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-75 dark:opacity-50"></div>
                 </div>
-                <div className="p-4 absolute bottom-0 left-0 right-0 z-20">
+                <div className="p-4 absolute bottom-0 left-0 right-0 z-20 bg-black bg-opacity-50 dark:bg-gray-900 dark:bg-opacity-75">
                   <h2 className="text-2xl font-bold text-white">{recipe.title}</h2>
                   <div className="flex items-center mt-2">
                     <span
