@@ -1,10 +1,10 @@
-import logo from '../assets/Images/logo.png';
+import logo from '../assets/Images/logo.png'
 import background from '../assets/Images/background.jpg';
 import { Link } from 'react-router-dom';
 
 function Home() {
   return (
-    <main className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 font-tenor-sans min-h-screen flex flex-col items-center py-10 px-4 md:px-8">
+    <main className="min-h-screen bg-gray-100 p-4 md:p-8 dark:bg-gray-900 dark:text-white">
       <div className="container-custom mx-auto px-8 py-8 text-center card-custom shadow-lg bg-cover" style={{backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '800px', maxWidth: '1400px'}}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center justify-center w-full">
     <div className="flex justify-center md:justify-center">
