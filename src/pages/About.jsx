@@ -4,11 +4,15 @@ import gad from '../assets/About_images/Gad.jpg';
 import yotam from '../assets/About_images/Yotam.jpg';
 import almog from '../assets/About_images/Almog.jpg';
 import tomer from '../assets/About_images/Tomer.jpg';
+import background from '../assets/About_images/Background.jpg'; 
 
 function About() {
   return (
-    <main className="min-h-screen bg-gray-100 p-4 md:p-8 dark:bg-gray-900 dark:text-white">
-      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 dark:bg-gray-800 dark:text-white">
+    <main 
+      className="min-h-screen p-4 md:p-8 dark:bg-gray-900 dark:text-white"
+      style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+    >
+      <div className="max-w-4xl mx-auto bg-white bg-opacity-70 backdrop-blur-md rounded-lg shadow-lg p-8 dark:bg-gray-800 dark:bg-opacity-70">
         
         {/* Back to Home Link */}
         <Link to="/" className="text-blue-500 hover:underline mb-4 inline-block">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import recipes from '../assets/recipes.json';
+import background from '../assets/videos/Background.jpg'; // Importing the background image
 
 const RecipeDetail = () => {
   // Extracting the recipe ID from the URL parameters
@@ -18,8 +19,11 @@ const RecipeDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 md:p-8 dark:bg-gray-900 dark:text-white">
-      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 dark:bg-gray-800">
+    <div 
+      className="min-h-screen p-4 md:p-8 dark:bg-gray-900 dark:text-white"
+      style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+    >
+      <div className="max-w-3xl mx-auto bg-white dark:bg-gray-900 bg-opacity-70 backdrop-blur-md rounded-lg shadow-md p-6 dark:bg-gray-800">
         
         {/* Link to go back to the recipes page */}
         <Link to="/recipes" className="text-blue-500 hover:underline mb-4 inline-block">

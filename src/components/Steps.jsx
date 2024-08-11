@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import recipesData from '../assets/recipes.json';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import background from '../assets/Steps_images/Background.jpg'; 
 
 const importAll = (r) => {
   let images = {};
@@ -128,8 +129,11 @@ function Steps() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 md:p-8 dark:bg-gray-900 dark:text-white">
-      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 dark:bg-gray-800">
+    <div 
+      className="min-h-screen p-4 md:p-8 dark:bg-gray-900 dark:text-white"
+      style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+    >
+      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 dark:bg-gray-800 bg-opacity-70 backdrop-blur-md">
         <Link to="/recipes" className="text-blue-500 hover:underline mb-4 inline-block">
           &larr; Back to Recipes
         </Link>
