@@ -1,12 +1,11 @@
+import React from 'react';
 
-function Footer() {
-  return (
-    <footer className="bg-gray-200 text-gray-700 text-center py-4 mt-auto">
-      <div className="container mx-auto">
-        <p>© 2024 CookMate</p>
-      </div>
-    </footer>
-  );
-}
+const Footer = () => (
+  <footer className="bg-gray-800 text-white p-4 mt-8">
+    <div className="text-center">
+      © 2024 CookMate. All rights reserved.
+    </div>
+  </footer>
+);
 
 export default Footer;
