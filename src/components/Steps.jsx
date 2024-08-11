@@ -131,7 +131,7 @@ function Steps() {
   }
 
   return (
-    <div className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200 font-tenor-sans min-h-screen flex flex-col items-center py-20 px-4 md:px-8">
+    <div className="min-h-screen bg-gray-100 p-4 md:p-8 dark:bg-gray-900 dark:text-white">
       <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 dark:bg-gray-800">
         <Link to="/recipes" className="text-blue-500 hover:underline mb-4 inline-block">
           &larr; Back to Recipes
