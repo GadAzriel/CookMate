@@ -3,10 +3,16 @@ import { useParams, Link } from 'react-router-dom';
 import recipes from '../assets/recipes.json';
 
 const RecipeDetail = () => {
+  // Extracting the recipe ID from the URL parameters
   const { id } = useParams();
+  
+  // Retrieving the recipe from the JSON file using the ID
   const recipe = recipes.recipes[id];
+  
+  // State to manage the number of servings, initialized to 1
   const [servings, setServings] = useState(1);
 
+  // Function to scale the amount of each ingredient based on the number of servings
   const scaleIngredient = (amount) => {
     return (amount * servings).toFixed(2);
   };
@@ -14,9 +20,13 @@ const RecipeDetail = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-4 md:p-8 dark:bg-gray-900 dark:text-white">
       <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 dark:bg-gray-800">
+        
+        {/* Link to go back to the recipes page */}
         <Link to="/recipes" className="text-blue-500 hover:underline mb-4 inline-block">
           &larr; Back to Recipes
         </Link>
+        
+        {/* Recipe title */}
         <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
 
         {/* Video Section */}
@@ -30,6 +40,7 @@ const RecipeDetail = () => {
           </video>
         </div>
 
+        {/* Input field to change the number of servings */}
         <label className="block mb-4">
           <span className="text-lg font-semibold">Number of Servings:</span>
           <input
@@ -41,6 +52,7 @@ const RecipeDetail = () => {
           />
         </label>
 
+        {/* Ingredients list */}
         <h2 className="text-2xl font-semibold mb-4">Ingredients</h2>
         <ul className="list-disc list-inside mb-4">
           {recipe.ingredients.map((ingredient, index) => (
@@ -50,20 +62,22 @@ const RecipeDetail = () => {
           ))}
         </ul>
 
+        {/* Instructions list */}
         <h2 className="text-2xl font-semibold mb-4">Instructions</h2>
         <ol className="list-decimal list-inside mb-4">
           {recipe.instructions.map((instruction, index) => (
             <li key={index} className="mb-4">
               {instruction} <br />
+              {/* Displaying the duration for each step */}
               <span className="text-sm text-gray-500">Duration: {recipe.duration[index]} minutes</span>
             </li>
           ))}
         </ol>
 
-        {/* Button to go to Interactive Cooking Assistant */}
+        {/* Button to go to the Interactive Cooking Assistant */}
         <Link 
           to={`/recipes/${recipe.title}/steps`} 
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 block text-center"
         >
           Start Interactive Cooking
         </Link>

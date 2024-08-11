@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Recipes from './components/Recipes';
 import RecipeDetail from './components/RecipeDetail';
@@ -17,7 +17,7 @@ function App() {
         <Header />
         <main className="flex-grow pt-16"> {/* Add padding to prevent content overlap with the fixed header */}
           <Routes>
-          <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/recipes" element={<Recipes />} />
             <Route path="/recipes/:id" element={<RecipeDetail recipes={recipes} />} />
             <Route path='/recipes/:name/steps' element={<Steps />} />
