@@ -1,37 +1,24 @@
-import logo from '../assets/Images/logo.png'
-import background from '../assets/Images/background.jpg';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Home() {
+const Home = () => {
   return (
-    <main className="min-h-screen bg-gray-100 p-4 md:p-8 dark:bg-gray-900 dark:text-white">
-      <div className="container-custom mx-auto px-8 py-8 text-center card-custom shadow-lg bg-cover" style={{backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '800px', maxWidth: '1400px'}}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center justify-center w-full">
-    <div className="flex justify-center md:justify-center">
-      <img src={logo} alt="CookMate Logo" className="w-2/3 h-auto rounded-lg"/>
-    </div>
-    <div className="flex flex-col justify-center">
-      <div className="card-custom shadow-lg text-center md:text-center p-4">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 drop-shadow-lg">
-          WELCOME TO COOKMATE!
-        </h1>
-        <p className="mt-2 text-md md:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-5xl font-bold text-gray-900">WELCOME TO COOKMATE!</h1>
+        <p className="mt-4 text-lg text-gray-700">
           Discover a world of culinary inspiration with our diverse collection of recipes and detailed preparation instructions.
           Enhance your cooking experience with our Interactive Cooking Assistant, featuring step-by-step guides, timer integration, and voice commands.
           Cook, share, and enjoy your culinary journey with CookMate!
         </p>
-        <div className="mt-4 flex justify-center">
-          <Link to="/recipes" className="bg-yellow-500 text-gray-900 font-bold px-6 py-2 rounded-full shadow-lg hover:bg-yellow-600 transition duration-300">
+        <Link to="/recipes">
+          <button className="mt-8 px-6 py-3 bg-blue-500 text-white rounded-full text-lg font-semibold hover:bg-blue-600">
             Start your culinary experience
-          </Link>
-        </div>
+          </button>
+        </Link>
       </div>
     </div>
-  </div>
-</div>
-     
-    </main>
   );
-}
+};
 
 export default Home;
