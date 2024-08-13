@@ -1,35 +1,36 @@
-## [CookMate - Interactive Cooking Website](https://cook-mate-kappa.vercel.app/)
+# [CookMate - Interactive Cooking Website](https://cook-mate-kappa.vercel.app/)
 
 ![CookMate Logo](./public/Logo.jpg)
 
-CookMate is an interactive web application designed to make cooking a seamless and enjoyable experience. Users can browse through a variety of recipes, get detailed instructions for preparing dishes, and engage in a step-by-step cooking guide.
+**CookMate** is an interactive web application designed to make cooking a seamless and enjoyable experience. Users can browse through a variety of recipes, get detailed instructions for preparing dishes, and engage in a step-by-step cooking guide with the **Interactive Cooking Assistant**.
 
 ## Key Features
 
-- **Recipe Browsing**: Users can explore a curated list of recipes on the homepage.
-- **Detailed Instructions**: Each recipe comes with comprehensive preparation steps and ingredient lists.
-- **Interactive Cooking Guide**: The CookWithMe feature guides users through the cooking process with a visual progress bar.
-- **Responsive Design**: Optimized for various device sizes, providing a consistent user experience across desktops, tablets, and mobile devices.
-- **Accessibility**: Navigation controls and UI elements are designed to be accessible and user-friendly.
+- **Recipe Browsing**: Explore a curated list of recipes on the homepage, complete with beautiful images and detailed descriptions.
+- **Detailed Instructions**: Each recipe includes comprehensive preparation steps, ingredient lists, and serving adjustments.
+- **Interactive Cooking Guide**: The **CookWithMe** feature guides users through the cooking process with a visual progress bar, real-time instructions, and voice command support.
+- **Responsive Design**: Optimized for various device sizes, ensuring a consistent user experience across desktops, tablets, and mobile devices.
+- **Accessibility**: Navigation controls and UI elements are designed to be accessible and user-friendly, providing a smooth experience for all users.
 
 ## Technologies Used
 
-- **React**: A JavaScript library for building user interfaces with component-based architecture.
-- **Tailwind CSS**: A utility-first CSS framework for styling the application.
-- **React Router**: A standard library for routing in React, allowing navigation between different components.
+- **React**: A JavaScript library for building user interfaces with a component-based architecture.
+- **Tailwind CSS**: A utility-first CSS framework used for styling the application.
+- **React Router**: A standard library for routing in React, allowing seamless navigation between different components.
 
 ## Components
 
-- `App.jsx`: The root component that renders the entire application and sets up routing.
-- `Head.jsx`: Displays the site's header, including the brand logo and navigation link to the home page.
-- `Footer.jsx`: Renders the website's footer with copyright and acknowledgment information.
-- `Recipes.jsx`: Lists all recipes in a grid layout for users to select from.
-- `RecipeDeatil.jsx`: Provides detailed information about the selected recipe.
-- `Steps.jsx`: Offers an interactive cooking session for the chosen recipe.
+- **`App.jsx`**: The root component that renders the entire application and sets up routing.
+- **`Header.jsx`**: Displays the site's header, including the brand logo, navigation links, and a toggle for dark mode.
+- **`Footer.jsx`**: Renders the website's footer with copyright information and links to other pages.
+- **`Recipes.jsx`**: Lists all recipes in a visually appealing carousel layout, allowing users to browse and select recipes.
+- **`RecipeDetail.jsx`**: Provides detailed information about the selected recipe, including ingredients, instructions, and a video tutorial.
+- **`Steps.jsx`**: Offers an interactive cooking session for the chosen recipe with voice command integration and step-by-step guidance.
 
-## Page
-- `Home.jsx`: 
-- `About.jsx`:
+## Pages
+
+- **`Home.jsx`**: The landing page that introduces CookMate, featuring the brand’s message and a call-to-action to explore recipes.
+- **`About.jsx`**: Provides information about CookMate, its mission, and the team behind the project.
 
 ## Setup and Installation
 
@@ -69,4 +70,6 @@ Project Link: [ https://github.com/GadAzriel/CookMate]( https://github.com/GadAz
 - Almog Elbaz
 - Tomer Ben-Lulu
 - Yotam Gilad
+
+
 
