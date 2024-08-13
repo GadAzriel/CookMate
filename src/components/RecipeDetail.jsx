@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import recipes from '../assets/recipes.json'; // Importing the recipes data from a JSON file
 import background from '../assets/videos/Background.jpg'; // Importing the background image
+import styles from '../style'; // Import styles from style.js
 
 const RecipeDetail = () => {
   // Extracting the recipe ID from the URL parameters
@@ -20,24 +21,24 @@ const RecipeDetail = () => {
 
   return (
     <div 
-      className="min-h-screen p-4 md:p-8 dark:bg-gray-900 dark:text-white"
+      className={styles.recipeDetailMain}
       style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
-      <div className="max-w-3xl mx-auto bg-white dark:bg-gray-900 bg-opacity-70 backdrop-blur-md rounded-lg shadow-md p-6 dark:bg-gray-800">
+      <div className={styles.recipeDetailContainer}>
         
         {/* Link to go back to the recipes page */}
-        <Link to="/recipes" className="text-blue-500 hover:underline mb-4 inline-block">
+        <Link to="/recipes" className={styles.backLink}>
           &larr; Back to Recipes
         </Link>
         
         {/* Recipe title */}
-        <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
+        <h1 className={styles.recipeDetailTitle}>{recipe.title}</h1>
 
         {/* Video Section */}
-        <div className="mb-4">
+        <div className={styles.videoSection}>
           <video 
             controls 
-            className="w-full max-w-lg mx-auto aspect-video rounded-lg shadow-md"
+            className={styles.video}
           >
              {/* Dynamically loading the video file based on the recipe title */}
             <source src={require(`../assets/videos/${recipe.title}.mp4`)} type="video/mp4" />
@@ -46,20 +47,20 @@ const RecipeDetail = () => {
         </div>
 
         {/* Input field to change the number of servings */}
-        <label className="block mb-4">
+        <label className={styles.servingsLabel}>
           <span className="text-lg font-semibold">Number of Servings:</span>
           <input
             type="number"
             value={servings} // The current value of servings
             onChange={(e) => setServings(e.target.value)} // Update the state when the user changes the number of servings
-            className="ml-2 p-2 border border-gray-400 rounded w-20 dark:bg-gray-700 dark:border-gray-600"
+            className={styles.servingsInput}
             min="1" // Ensure the number of servings is at least 1
           />
         </label>
 
         {/* Ingredients list */}
-        <h2 className="text-2xl font-semibold mb-4">Ingredients</h2>
-        <ul className="list-disc list-inside mb-4">
+        <h2 className={styles.ingredientsTitle}>Ingredients</h2>
+        <ul className={styles.ingredientsList}>
           {recipe.ingredients.map((ingredient, index) => (
             <li key={index}>
               {/* Scaling the amount of each ingredient based on the number of servings */}
@@ -69,13 +70,13 @@ const RecipeDetail = () => {
         </ul>
 
         {/* Instructions list */}
-        <h2 className="text-2xl font-semibold mb-4">Instructions</h2>
-        <ol className="list-decimal list-inside mb-4">
+        <h2 className={styles.instructionsTitle}>Instructions</h2>
+        <ol className={styles.instructionsList}>
           {recipe.instructions.map((instruction, index) => (
-            <li key={index} className="mb-4">
+            <li key={index} className={styles.instructionItem}>
               {instruction} <br />
               {/* Displaying the duration for each step */}
-              <span className="text-sm text-gray-500">Duration: {recipe.duration[index]} minutes</span>
+              <span className={styles.instructionDuration}>Duration: {recipe.duration[index]} minutes</span>
             </li>
           ))}
         </ol>
@@ -83,7 +84,7 @@ const RecipeDetail = () => {
         {/* Button to go to the Interactive Cooking Assistant */}
         <Link 
           to={`/recipes/${recipe.title}/steps`} 
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 block text-center"
+          className={styles.interactiveCookingButton}
         >
           Start Interactive Cooking
         </Link>

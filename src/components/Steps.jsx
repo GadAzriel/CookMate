@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'; // Importing necessary hooks
 import recipesData from '../assets/recipes.json'; // Importing recipes data from a JSON file
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'; // Importing speech recognition functionality
 import background from '../assets/Steps_images/Background.jpg';  // Importing background image
+import styles from '../style'; // Importing styles
 
 const importAll = (r) => {
   let images = {};
@@ -142,49 +143,49 @@ function Steps() {
 
   return (
     <div 
-      className="min-h-screen p-4 md:p-8 dark:bg-gray-900 dark:text-white"
+      className={styles.stepsMain}
       style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
-      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 dark:bg-gray-800 bg-opacity-70 backdrop-blur-md">
-        <Link to="/recipes" className="text-blue-500 hover:underline mb-4 inline-block">
+      <div className={styles.stepsContainer}>
+        <Link to="/recipes" className={styles.stepsBackLink}>
           &larr; Back to Recipes
         </Link>
-        <h1 className="text-4xl font-bold mb-4">Step {currentStep + 1} of {recipe.instructions.length}</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <h1 className={styles.stepsTitle}>Step {currentStep + 1} of {recipe.instructions.length}</h1>
+        <div className={styles.stepsGrid}>
           {/* Displaying the image for the current step */}
-          <img src={getStepImage(recipe.title, currentStep)} alt={`${recipe.title} step ${currentStep + 1}`} className="w-full h-auto rounded-lg shadow-md" />
+          <img src={getStepImage(recipe.title, currentStep)} alt={`${recipe.title} step ${currentStep + 1}`} className={styles.stepImage} />
           <div className="flex flex-col justify-center">
-            <p className="text-xl mb-4">{recipe.instructions[currentStep]}</p>
-            <div className="mb-4">
-              <p className="text-lg font-semibold">Time remaining on this step: {formatTime(timer)}</p>
-              <div className="w-full bg-gray-300 rounded-full h-6 overflow-hidden dark:bg-gray-700">
-                <div className="bg-green-500 h-full rounded-full" style={{ width: `${calculateProgress()}%` }}></div>
+            <p className={styles.stepInstruction}>{recipe.instructions[currentStep]}</p>
+            <div className={styles.timerContainer}>
+              <p className={styles.timerText}>Time remaining on this step: {formatTime(timer)}</p>
+              <div className={styles.progressBarContainer}>
+                <div className={styles.progressBar} style={{ width: `${calculateProgress()}%` }}></div>
               </div>
-              <p className="text-lg font-semibold">{calculateProgress()}%</p>
+              <p className={styles.progressText}>{calculateProgress()}%</p>
             </div>
-            <div className="flex justify-between">
+            <div className={styles.navigationButtonsContainer}>
               {/* Button to go to the previous step */}
               <button
                 onClick={handlePrevStep}
                 disabled={currentStep === 0}
-                className="bg-blue-500 text-white px-6 py-2 mt-4 rounded-full shadow hover:bg-blue-700 transition duration-300 disabled:opacity-50"
+                className={styles.navigationButton}
               >
                 Prev
               </button>
-              {/* Button to go to the previous step */}
+              {/* Button to go to the next step */}
               <button
                 onClick={handleNextStep}
                 disabled={currentStep === recipe.instructions.length - 1}
-                className="bg-blue-500 text-white px-6 py-2 mt-4 rounded-full shadow hover:bg-blue-700 transition duration-300 disabled:opacity-50"
+                className={styles.navigationButton}
               >
                 Next
               </button>
             </div>
-            <div className="mt-4 flex justify-center">
+            <div className={styles.voiceCommandsContainer}>
               {/* Button to start voice commands */}
               <button
                 onClick={startListening}
-                className={`bg-gray-500 text-white px-6 py-2 mt-4 rounded-full hover:bg-blue-200 transition duration-300 w-full ${isListening ? 'hidden' : ''}`}
+                className={`${styles.voiceCommandButton} ${isListening ? 'hidden' : ''}`}
                 disabled={isListening}
               >
                 Start Voice Commands
@@ -192,7 +193,7 @@ function Steps() {
               {/* Button to stop voice commands */}
               <button
                 onClick={stopListening}
-                className={`bg-gray-500 text-white px-6 py-2 mt-4 rounded-full hover:bg-red-200 transition duration-300 w-full ${isListening ? '' : 'hidden'}`}
+                className={`${styles.voiceCommandButton} ${isListening ? '' : 'hidden'}`}
                 disabled={!isListening}
               >
                 Stop Voice Commands

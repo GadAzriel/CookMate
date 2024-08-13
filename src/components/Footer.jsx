@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from '../style'; // Import styles from style.js
 
 // Footer component to display at the bottom of the page
 const Footer = () => (
-  <footer className="bg-gray-800 text-white p-4 mt-8">
-    <div className="text-center">
+  <footer className={styles.footer}>
+    <div className={styles.footerText}>
       © 2024 CookMate. All rights reserved.
     </div>
   </footer>

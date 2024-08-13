@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css'; // Importing necessary styles for the c
 import 'slick-carousel/slick/slick-theme.css';
 import recipes from '../assets/recipes.json'; // Importing the recipes data from a JSON file
 import background from '../assets/Recipes_images/Background.jpg'; // Importing a background image for the page
+import styles from '../style'; // Import styles from style.js
 
 // Utility function to import all images from a directory
 const importAll = (r) => {
@@ -103,12 +104,12 @@ const Recipes = () => {
 
   return (
     <div
-      className="min-h-screen p-4 md:p-8 dark:bg-gray-900 dark:text-white"
+      className={styles.recipesMain}
       style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
        {/* Container for the carousel and heading */}
-      <div className="bg-white dark:bg-gray-900 bg-opacity-70 backdrop-blur-md rounded-xl shadow-lg max-w-full lg:max-w-6xl xl:max-w-7xl mx-auto max-h-full lg:max-h-[70vh] xl:max-h-[80vh]">
-        <h1 className="text-5xl font-bold text-center mb-12 text-green-600 dark:text-green-400">Our Delicious Recipes</h1>
+      <div className={styles.recipesContainer}>
+        <h1 className={styles.recipesTitle}>Our Delicious Recipes</h1>
          {/* Carousel displaying recipe cards */}
         <Slider {...settings}>
           {Object.keys(recipeList).map((id) => {
@@ -122,24 +123,24 @@ const Recipes = () => {
             }
 
             return (
-              <div key={id} className="p-4">
+              <div key={id} className={styles.recipeCard}>
                 <Link
                   to={`/recipes/${id}`} // Link to the detailed recipe page
-                  className="group relative block bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 dark:bg-gray-800"
+                  className={styles.recipeLink}
                 >
-                  <div className="relative overflow-hidden">
+                  <div className={styles.recipeImageContainer}>
                     <img
                       src={image.default || image} // Display the recipe image
                       alt={recipe.title}
-                      className="w-full h-72 object-cover transform transition-transform duration-500 group-hover:scale-110"
+                      className={styles.recipeImage}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-75 dark:opacity-50"></div> {/* Gradient overlay for better readability */}
+                    <div className={styles.recipeOverlay}></div> {/* Gradient overlay for better readability */}
                   </div>
-                  <div className="p-4 absolute bottom-0 left-0 right-0 z-20 bg-black bg-opacity-50 dark:bg-gray-900 dark:bg-opacity-75">
-                    <h2 className="text-2xl font-bold text-white">{recipe.title}</h2>
-                    <div className="flex items-center mt-2">
+                  <div className={styles.recipeInfoContainer}>
+                    <h2 className={styles.recipeTitle}>{recipe.title}</h2>
+                    <div className={styles.recipeDetailsContainer}>
                       <span
-                        className={`inline-block px-3 py-1 text-sm font-semibold text-white rounded-full ${
+                        className={`${styles.recipeDifficultyBadge} ${
                           recipe.difficulty === 'Beginner'
                             ? 'bg-green-500'
                             : recipe.difficulty === 'Easy'
@@ -151,7 +152,7 @@ const Recipes = () => {
                       >
                         {recipe.difficulty} {/* Difficulty level of the recipe */}
                       </span>
-                      <span className="ml-2 text-gray-300">Allergies: {recipe.allergies}</span>
+                      <span className={styles.recipeAllergiesText}>Allergies: {recipe.allergies}</span>
                     </div>
                   </div>
                 </Link>
