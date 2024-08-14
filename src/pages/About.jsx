@@ -7,6 +7,7 @@ import tomer from '../assets/About_images/Tomer.jpg';
 import background from '../assets/About_images/Background.jpg';
 import styles from '../style'; // import style
 
+// About component representing the "About Us" page
 function About() {
   return (
     <main 
@@ -16,7 +17,7 @@ function About() {
       <div className={styles.aboutContainer}>
         
         <Link to="/" className={styles.aboutLink}>
-          &larr; Back Home
+          &larr; Back Home {/* Link to navigate back to the home page */}
         </Link>
         
         <h1 className={styles.aboutTitle}>About CookMate</h1>
@@ -49,7 +50,7 @@ function About() {
             </p>
           </div>
 
-          <div className={styles.teamContainer}>
+          <div className={styles.teamContainer}>    {/* Right section - Team Members */}
             <h2 className={styles.teamTitle}>Our Group</h2>
             <div className={styles.teamGrid}>
               

@@ -4,10 +4,11 @@ import Logo from '../assets/Home_images/Logo.jpg';
 import background from '../assets/Home_images/Background.jpg';
 import styles from '../style'; //add the style
 
+// Home component representing the homepage
 const Home = () => {
   return (
     <div 
-      className={styles.homeContainer} 
+      className={styles.homeContainer} // Applying the container style
       style={{ backgroundImage: `url(${background})` }} 
     >
       <div className={styles.overlayContainer}>
@@ -23,7 +24,7 @@ const Home = () => {
             <button className={styles.button}>
               Start your culinary experience
             </button>
-          </Link>
+          </Link> {/* Button linking to the recipes page */}
         </div>
       </div>
     </div>
