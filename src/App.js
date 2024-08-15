@@ -8,7 +8,6 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import About from './pages/About';
 
-
 // Main App component that defines the structure and routing of the application
 function App() {
   return (
@@ -19,9 +18,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} /> {/* Route for the Home page */}
             <Route path="/recipes" element={<Recipes />} /> {/* Route for the Recipes page */}
-            <Route path="/recipes/:id" element={<RecipeDetail recipes={recipes} />} /> {/* Route for detailed recipe view, passing recipes data as a prop */}
-            <Route path='/recipes/:name/steps' element={<Steps />} /> {/* Route for the step-by-step guide for a recipe */}
-            <Route path='/about' element={<About />} /> {/* Route for the About page */}
+            <Route path="/recipes/:id" element={<RecipeDetail />} /> {/* Route for detailed recipe view */}
+            <Route path="/recipes/:name/steps" element={<Steps />} /> {/* Route for the step-by-step guide for a recipe */}
+            <Route path="/about" element={<About />} /> {/* Route for the About page */}
           </Routes>
         </main>
         <Footer /> {/* Footer at the bottom of the page */}
