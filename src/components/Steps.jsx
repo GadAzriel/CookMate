@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom'; // Importing necessary hooks for routing
-import recipesData from '../assets/recipes.json'; // Importing recipes data from a JSON file
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'; // Importing speech recognition functionality
-import background from '../assets/Steps_images/Background.jpg';  // Importing background image
-import styles from '../style'; // Importing styles
+import { useParams, Link } from 'react-router-dom'; 
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'; 
+import background from '../assets/Steps_images/Background.jpg';  
+import styles from '../style'; 
 
+// Utility function to import all images from a directory
 const importAll = (r) => {
   let images = {};
   r.keys().forEach((item) => {
-    images[item.replace('./', '')] = r(item); // Adding images to the images object
+    images[item.replace('./', '')] = r(item); 
   });
   return images;
 };
@@ -18,7 +18,7 @@ const images = importAll(require.context('../assets/Steps_images', false, /\.(pn
 
 function Steps() {
   const { name } = useParams();  // Extracting the recipe name from the URL parameters
-  const [recipe, setRecipe] = useState(null);  // State to hold the current recipe
+  const [recipe, setRecipe] = useState(null);  // State to hold the current recipe data
   const [currentStep, setCurrentStep] = useState(0); // State to track the current step in the recipe
   const [timer, setTimer] = useState(0);   // State to manage the countdown timer for each step
   const [totalDuration, setTotalDuration] = useState(0); // State to track the total duration of the recipe in seconds
@@ -26,17 +26,22 @@ function Steps() {
   const intervalRef = useRef(null);  // Ref to store the interval ID for clearing later
   const synth = window.speechSynthesis; // Speech synthesis object for speaking instructions
 
-   // useEffect to find the recipe based on the name and initialize the state
+  // useEffect to fetch the recipe data from the API based on the name and initialize the state
   useEffect(() => {
-    const foundRecipe = Object.values(recipesData.recipes).find(r => r.title === name);
-    if (foundRecipe) {
-      setRecipe(foundRecipe); // Set the recipe state
-      const totalTime = foundRecipe.duration.reduce((acc, time) => acc + time, 0);
-      setTotalDuration(totalTime); // Calculate and set the total duration of the recipe
-      setTimer(foundRecipe.duration[0] * 60); // Set timer for the first step (in seconds)
-    } else {
-      console.error(`Recipe with title "${name}" not found.`);
-    }
+    fetch("https://backendcookmate-5llw.vercel.app/api")
+      .then((response) => response.json())
+      .then((data) => {
+        const foundRecipe = Object.values(data[0].recipes).find(r => r.title === name); // Find the recipe based on the name
+        if (foundRecipe) {
+          setRecipe(foundRecipe); // Set the recipe state
+          const totalTime = foundRecipe.duration.reduce((acc, time) => acc + time, 0); // Calculate total duration
+          setTotalDuration(totalTime); // Set the total duration state
+          setTimer(foundRecipe.duration[0] * 60); // Set timer for the first step (in seconds)
+        } else {
+          console.error(`Recipe with title "${name}" not found.`);
+        }
+      })
+      .catch((error) => console.error("Error fetching recipe:", error));
   }, [name]);
 
   // useEffect to handle the timer for the current step
@@ -63,20 +68,19 @@ function Steps() {
   const commands = [
     {
       command: 'next',
-      callback: () => handleNextStep()
+      callback: () => handleNextStep() // Move to the next step when the user says "next"
     },
     {
       command: 'previous',
-      callback: () => handlePrevStep()
+      callback: () => handlePrevStep() // Move to the previous step when the user says "previous"
     },
     {
       command: 'start cooking',
-      callback: () => speakInstruction(recipe?.instructions[currentStep])
+      callback: () => speakInstruction(recipe?.instructions[currentStep]) // Speak the current step instruction when the user says "start cooking"
     }
   ];
 
-  // Destructuring resetTranscript from useSpeechRecognition
-  const { resetTranscript } = useSpeechRecognition({ commands });
+  const { resetTranscript } = useSpeechRecognition({ commands }); // Initialize speech recognition with commands
 
   // Function to speak the current instruction using speech synthesis
   const speakInstruction = (instruction) => {
@@ -104,19 +108,19 @@ function Steps() {
   const startListening = () => {
     setIsListening(true);
     resetTranscript(); // Reset the transcript for voice recognition
-    SpeechRecognition.startListening({ continuous: true });
+    SpeechRecognition.startListening({ continuous: true }); // Start listening continuously
     speakInstruction(recipe?.instructions[currentStep]);  // Speak the current instruction
   };
 
   // Function to stop listening for voice commands
   const stopListening = () => {
     setIsListening(false);
-    SpeechRecognition.stopListening();
+    SpeechRecognition.stopListening(); // Stop listening
   };
 
   // Function to get the corresponding image for the current step
   const getStepImage = (recipeName, stepNumber) => {
-    const imageName = `${recipeName}_${stepNumber + 1}.jpg`;
+    const imageName = `${recipeName}_${stepNumber + 1}.jpg`; // Construct the image name based on the recipe and step number
     return images[imageName];
   };
 
@@ -124,9 +128,9 @@ function Steps() {
   const calculateProgress = () => {
     let timePassed = 0;
     for (let i = 0; i < currentStep; i++) {
-      timePassed += recipe?.duration[i] * 60; // Convert minutes to seconds
+      timePassed += recipe?.duration[i] * 60; // Convert minutes to seconds for previous steps
     }
-    timePassed += (recipe?.duration[currentStep] * 60 - timer); // Calculate remaining time in seconds
+    timePassed += (recipe?.duration[currentStep] * 60 - timer); // Calculate remaining time in seconds for the current step
     return Math.round((timePassed / (totalDuration * 60)) * 100); // Calculate progress percentage
   };
 

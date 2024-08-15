@@ -15,13 +15,15 @@ const importAll = (r) => {
   return images;
 };
 
+// Importing all recipe images from the specified directory
 const images = importAll(require.context('../assets/Recipes_images', false, /\.(png|jpe?g|svg)$/));
 
+// Custom component for the "Next" arrow in the carousel
 const NextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <div
-      className={className} 
+      className={className}
       style={{
         ...style, 
         display: 'block',
@@ -37,6 +39,7 @@ const NextArrow = (props) => {
   );
 };
 
+// Custom component for the "Previous" arrow in the carousel
 const PrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
@@ -65,7 +68,11 @@ const Recipes = () => {
     fetch("https://backendcookmate-5llw.vercel.app/api")
       .then((response) => response.json())
       .then((data) => {
-        setRecipeList(data.recipes); // Updating state with fetched recipes
+        if (data && data[0] && data[0].recipes) {
+          setRecipeList(Object.values(data[0].recipes)); // Updating state with fetched recipes
+        } else {
+          console.error("No recipes found");
+        }
       })
       .catch((error) => console.error("Error fetching recipes:", error));
   }, []);
@@ -112,54 +119,58 @@ const Recipes = () => {
     >
       <div className={styles.recipesContainer}>
         <h1 className={styles.recipesTitle}>Our Delicious Recipes</h1>
-        <Slider {...settings}>
-          {recipeList.map((recipe, id) => {
-            const imageName = `${recipe.title.replace(/\s+/g, '')}.jpg`; 
-            const image = images[imageName]; 
+        {recipeList && recipeList.length > 0 ? (
+          <Slider {...settings}>
+            {recipeList.map((recipe, id) => {
+              const imageName = `${recipe.title.replace(/\s+/g, '')}.jpg`; 
+              const image = images[imageName]; 
 
-            if (!image) {
-              console.error(`Image not found: ${imageName}`);
-              return null;
-            }
+              if (!image) {
+                console.error(`Image not found: ${imageName}`);
+                return null;
+              }
 
-            return (
-              <div key={id} className={styles.recipeCard}>
-                <Link
-                  to={`/recipes/${id}`}
-                  className={styles.recipeLink}
-                >
-                  <div className={styles.recipeImageContainer}>
-                    <img
-                      src={image.default || image}
-                      alt={recipe.title}
-                      className={styles.recipeImage}
-                    />
-                    <div className={styles.recipeOverlay}></div>
-                  </div>
-                  <div className={styles.recipeInfoContainer}>
-                    <h2 className={styles.recipeTitle}>{recipe.title}</h2>
-                    <div className={styles.recipeDetailsContainer}>
-                      <span
-                        className={`${styles.recipeDifficultyBadge} ${
-                          recipe.difficulty === 'Beginner'
-                            ? 'bg-green-500'
-                            : recipe.difficulty === 'Easy'
-                            ? 'bg-blue-500'
-                            : recipe.difficulty === 'Intermediate'
-                            ? 'bg-orange-500'
-                            : 'bg-red-500'
-                        }`}
-                      >
-                        {recipe.difficulty}
-                      </span>
-                      <span className={styles.recipeAllergiesText}>Allergies: {recipe.allergies}</span>
+              return (
+                <div key={id} className={styles.recipeCard}>
+                  <Link
+                    to={`/recipes/${id + 1}`} // השתמשתי ב- `id + 1` כדי להתאים למפתח של המתכון
+                    className={styles.recipeLink}
+                  >
+                    <div className={styles.recipeImageContainer}>
+                      <img
+                        src={image.default || image}
+                        alt={recipe.title}
+                        className={styles.recipeImage}
+                      />
+                      <div className={styles.recipeOverlay}></div>
                     </div>
-                  </div>
-                </Link>
-              </div>
-            );
-          })}
-        </Slider>
+                    <div className={styles.recipeInfoContainer}>
+                      <h2 className={styles.recipeTitle}>{recipe.title}</h2>
+                      <div className={styles.recipeDetailsContainer}>
+                        <span
+                          className={`${styles.recipeDifficultyBadge} ${
+                            recipe.difficulty === 'Beginner'
+                              ? 'bg-green-500'
+                              : recipe.difficulty === 'Easy'
+                              ? 'bg-blue-500'
+                              : recipe.difficulty === 'Intermediate'
+                              ? 'bg-orange-500'
+                              : 'bg-red-500'
+                          }`}
+                        >
+                          {recipe.difficulty}
+                        </span>
+                        <span className={styles.recipeAllergiesText}>Allergies: {recipe.allergies}</span>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+          </Slider>
+        ) : (
+          <p>Loading recipes...</p> // Show loading message until recipes are fetched
+        )}
       </div>
     </div>
   );

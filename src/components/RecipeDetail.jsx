@@ -4,17 +4,18 @@ import background from '../assets/videos/Background.jpg';
 import styles from '../style'; 
 
 const RecipeDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // ID of the recipe from the URL params
   
   const [recipe, setRecipe] = useState(null); // State to store the recipe data
   const [servings, setServings] = useState(1);
 
   useEffect(() => {
     // Fetch the specific recipe data from the API using the recipe ID
-    fetch(`https://backendcookmate-5llw.vercel.app/api/${id}`)
+    fetch("https://backendcookmate-5llw.vercel.app/api")
       .then((response) => response.json())
       .then((data) => {
-        setRecipe(data); // Store the recipe data in state
+        const recipeData = data[0].recipes[id]; // Accessing the specific recipe using the ID
+        setRecipe(recipeData); // Store the recipe data in state
       })
       .catch((error) => console.error("Error fetching recipe:", error));
   }, [id]);
