@@ -4,43 +4,54 @@ import background from '../assets/videos/Background.jpg';
 import styles from '../style'; 
 
 const RecipeDetail = () => {
-  const { id } = useParams(); // ID of the recipe from the URL params
+  // Extract the recipe ID from the URL parameters
+  const { id } = useParams();
   
-  const [recipe, setRecipe] = useState(null); // State to store the recipe data
+  // State to store the recipe data fetched from the API
+  const [recipe, setRecipe] = useState(null);
+  // State to manage the number of servings, defaulting to 1
   const [servings, setServings] = useState(1);
 
   useEffect(() => {
-    // Fetch the specific recipe data from the API using the recipe ID
+    // Fetch the recipe data from the API using the ID from the URL
     fetch("https://backendcookmate-5llw.vercel.app/api")
       .then((response) => response.json())
       .then((data) => {
-        const recipeData = data[0].recipes[id]; // Accessing the specific recipe using the ID
-        setRecipe(recipeData); // Store the recipe data in state
+        // Access the specific recipe using the ID
+        const recipeData = data[0].recipes[id];
+        // Store the fetched recipe data in the state
+        setRecipe(recipeData);
       })
       .catch((error) => console.error("Error fetching recipe:", error));
-  }, [id]);
+  }, [id]); // The effect runs whenever the ID changes
 
+  // Function to scale ingredient amounts based on the number of servings
   const scaleIngredient = (amount) => {
     return (amount * servings).toFixed(2);
   };
 
+  // If the recipe data is not yet loaded, show a loading message
   if (!recipe) {
-    return <div>Loading...</div>; // Show a loading message while the data is being fetched
+    return <div>Loading...</div>;
   }
 
   return (
+    // Main container for the recipe detail page with background styling
     <div 
       className={styles.recipeDetailMain}
       style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       <div className={styles.recipeDetailContainer}>
         
+        {/* Link to navigate back to the recipes list */}
         <Link to="/recipes" className={styles.backLink}>
           &larr; Back to Recipes
         </Link>
         
+        {/* Recipe title */}
         <h1 className={styles.recipeDetailTitle}>{recipe.title}</h1>
 
+        {/* Section to display the recipe video */}
         <div className={styles.videoSection}>
           <video 
             controls 
@@ -51,6 +62,7 @@ const RecipeDetail = () => {
           </video>
         </div>
 
+        {/* Input field to adjust the number of servings */}
         <label className={styles.servingsLabel}>
           <span className="text-lg font-semibold">Number of Servings:</span>
           <input
@@ -62,6 +74,7 @@ const RecipeDetail = () => {
           />
         </label>
 
+        {/* Section to display the ingredients list */}
         <h2 className={styles.ingredientsTitle}>Ingredients</h2>
         <ul className={styles.ingredientsList}>
           {recipe.ingredients.map((ingredient, index) => (
@@ -71,6 +84,7 @@ const RecipeDetail = () => {
           ))}
         </ul>
 
+        {/* Section to display the cooking instructions */}
         <h2 className={styles.instructionsTitle}>Instructions</h2>
         <ol className={styles.instructionsList}>
           {recipe.instructions.map((instruction, index) => (
@@ -81,6 +95,7 @@ const RecipeDetail = () => {
           ))}
         </ol>
 
+        {/* Button to start the interactive cooking assistant */}
         <Link 
           to={`/recipes/${recipe.title}/steps`} 
           className={styles.interactiveCookingButton}

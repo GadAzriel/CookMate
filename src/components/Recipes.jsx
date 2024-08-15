@@ -61,7 +61,8 @@ const PrevArrow = (props) => {
 };
 
 const Recipes = () => {
-  const [recipeList, setRecipeList] = useState([]); // State for storing recipes
+  // State for storing the list of recipes fetched from the backend
+  const [recipeList, setRecipeList] = useState([]); 
 
   useEffect(() => {
     // Fetching recipes data from the backend API
@@ -69,7 +70,8 @@ const Recipes = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data && data[0] && data[0].recipes) {
-          setRecipeList(Object.values(data[0].recipes)); // Updating state with fetched recipes
+          // Updating state with fetched recipes
+          setRecipeList(Object.values(data[0].recipes)); 
         } else {
           console.error("No recipes found");
         }
@@ -77,14 +79,15 @@ const Recipes = () => {
       .catch((error) => console.error("Error fetching recipes:", error));
   }, []);
 
+  // Settings for the react-slick carousel
   const settings = {
-    dots: true, 
-    infinite: true, 
-    speed: 500, 
-    slidesToShow: 3, 
-    slidesToScroll: 1, 
-    nextArrow: <NextArrow />, 
-    prevArrow: <PrevArrow />, 
+    dots: true, // Enable dot indicators for each slide
+    infinite: true, // Enable infinite loop sliding
+    speed: 500, // Transition speed for slides
+    slidesToShow: 3, // Number of slides to show at a time
+    slidesToScroll: 1, // Number of slides to scroll at a time
+    nextArrow: <NextArrow />, // Custom "Next" arrow component
+    prevArrow: <PrevArrow />, // Custom "Previous" arrow component
     responsive: [
       {
         breakpoint: 1280,
@@ -113,6 +116,7 @@ const Recipes = () => {
   };
 
   return (
+    // Main container with background styling
     <div
       className={styles.recipesMain}
       style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
@@ -120,10 +124,12 @@ const Recipes = () => {
       <div className={styles.recipesContainer}>
         <h1 className={styles.recipesTitle}>Our Delicious Recipes</h1>
         {recipeList && recipeList.length > 0 ? (
+          // Carousel to display recipe cards
           <Slider {...settings}>
             {recipeList.map((recipe, id) => {
+              // Generate the image filename based on the recipe title
               const imageName = `${recipe.title.replace(/\s+/g, '')}.jpg`; 
-              const image = images[imageName]; 
+              const image = images[imageName]; // Get the corresponding image from the imported images
 
               if (!image) {
                 console.error(`Image not found: ${imageName}`);
@@ -131,11 +137,13 @@ const Recipes = () => {
               }
 
               return (
+                // Each recipe is wrapped in a Link to its detail page
                 <div key={id} className={styles.recipeCard}>
                   <Link
-                    to={`/recipes/${id + 1}`} // השתמשתי ב- `id + 1` כדי להתאים למפתח של המתכון
+                    to={`/recipes/${id + 1}`} // Using `id + 1` to match the recipe key
                     className={styles.recipeLink}
                   >
+                    {/* Recipe image with overlay effect */}
                     <div className={styles.recipeImageContainer}>
                       <img
                         src={image.default || image}
@@ -144,6 +152,7 @@ const Recipes = () => {
                       />
                       <div className={styles.recipeOverlay}></div>
                     </div>
+                    {/* Displaying recipe title and details like difficulty and allergies */}
                     <div className={styles.recipeInfoContainer}>
                       <h2 className={styles.recipeTitle}>{recipe.title}</h2>
                       <div className={styles.recipeDetailsContainer}>
