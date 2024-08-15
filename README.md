@@ -17,6 +17,10 @@
 - **React**: A JavaScript library for building user interfaces with a component-based architecture.
 - **Tailwind CSS**: A utility-first CSS framework used for styling the application.
 - **React Router**: A standard library for routing in React, allowing seamless navigation between different components.
+- **Backend**: Next.js
+- **Database**: MongoDB
+- **Deployment**: Vercel
+
 
 ## Components
 
