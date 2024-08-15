@@ -7,7 +7,7 @@ import Steps from './components/Steps';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import About from './pages/About';
-import recipes from './assets/recipes.json'; // Importing the recipes data from a local JSON file
+
 
 // Main App component that defines the structure and routing of the application
 function App() {
