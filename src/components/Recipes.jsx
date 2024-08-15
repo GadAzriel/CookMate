@@ -1,49 +1,44 @@
-import React from 'react';
-import Slider from 'react-slick'; // Importing React-slick for the carousel functionality
-import { Link } from 'react-router-dom'; // Importing Link for navigation between pages
-import 'slick-carousel/slick/slick.css'; // Importing necessary styles for the carousel
+import React, { useEffect, useState } from 'react';
+import Slider from 'react-slick'; 
+import { Link } from 'react-router-dom'; 
+import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
-import recipes from '../assets/recipes.json'; // Importing the recipes data from a JSON file
-import background from '../assets/Recipes_images/Background.jpg'; // Importing a background image for the page
-import styles from '../style'; // Import styles from style.js
+import background from '../assets/Recipes_images/Background.jpg'; 
+import styles from '../style'; 
 
 // Utility function to import all images from a directory
 const importAll = (r) => {
   let images = {};
-  // Iterating over all files in the directory and adding them to the images object
   r.keys().forEach((item) => {
-    images[item.replace('./', '')] = r(item); // Removing './' from the file path and saving the file in the images object
+    images[item.replace('./', '')] = r(item);
   });
   return images;
 };
 
-// Importing all recipe images from the specified directory
 const images = importAll(require.context('../assets/Recipes_images', false, /\.(png|jpe?g|svg)$/));
 
-// Custom component for the "Next" arrow in the carousel
 const NextArrow = (props) => {
-  const { className, style, onClick } = props; // Destructuring props passed by React Slick
+  const { className, style, onClick } = props;
   return (
     <div
-      className={className} // Applying the default className provided by React Slick
+      className={className} 
       style={{
-        ...style, // Applying the default styles provided by React Slick
+        ...style, 
         display: 'block',
         background: 'gray',
         borderRadius: '60%',
-        width: '40px', // Increased width
-        height: '40px', // Increased height
-        padding: '10px', // Adjust padding for better sizing
+        width: '40px', 
+        height: '40px', 
+        padding: '10px', 
         zIndex: '2',
       }}
-      onClick={onClick} // Handling the click event to move to the previous slide
+      onClick={onClick} 
     />
   );
 };
 
-// Custom component for the "Previous" arrow in the carousel
 const PrevArrow = (props) => {
-  const { className, style, onClick } = props; // Destructuring props passed by React Slick
+  const { className, style, onClick } = props;
   return (
     <div
       className={className}
@@ -52,9 +47,9 @@ const PrevArrow = (props) => {
         display: 'block',
         background: 'gray',
         borderRadius: '60%',
-        width: '40px', // Increased width
-        height: '40px', // Increased height
-        padding: '10px', // Adjust padding for better sizing
+        width: '40px',
+        height: '40px',
+        padding: '10px',
         zIndex: '2',
       }}
       onClick={onClick}
@@ -62,29 +57,37 @@ const PrevArrow = (props) => {
   );
 };
 
-// Main component to display the list of recipes with a carousel
 const Recipes = () => {
-  const recipeList = recipes.recipes; // Accessing the list of recipes from the imported JSON file
+  const [recipeList, setRecipeList] = useState([]); // State for storing recipes
 
-  // Configuration settings for the carousel
+  useEffect(() => {
+    // Fetching recipes data from the backend API
+    fetch("https://backendcookmate-5llw.vercel.app/api")
+      .then((response) => response.json())
+      .then((data) => {
+        setRecipeList(data.recipes); // Updating state with fetched recipes
+      })
+      .catch((error) => console.error("Error fetching recipes:", error));
+  }, []);
+
   const settings = {
-    dots: true,  // Show navigation dots below the carousel
-    infinite: true, // Enables infinite looping of slides
-    speed: 500, // Transition speed between slides
-    slidesToShow: 3, // Number of slides to show at a time
-    slidesToScroll: 1, // Number of slides to scroll at a time
-    nextArrow: <NextArrow />, // Custom "Next" arrow component
-    prevArrow: <PrevArrow />, // Custom "Previous" arrow component
+    dots: true, 
+    infinite: true, 
+    speed: 500, 
+    slidesToShow: 3, 
+    slidesToScroll: 1, 
+    nextArrow: <NextArrow />, 
+    prevArrow: <PrevArrow />, 
     responsive: [
       {
-        breakpoint: 1280, // Adjusted for extra large screens
+        breakpoint: 1280,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 1024, // Settings for tablet
+        breakpoint: 1024,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -93,7 +96,7 @@ const Recipes = () => {
         },
       },
       {
-        breakpoint: 600, // Settings for small screens (mobile)
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -107,34 +110,31 @@ const Recipes = () => {
       className={styles.recipesMain}
       style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
-       {/* Container for the carousel and heading */}
       <div className={styles.recipesContainer}>
         <h1 className={styles.recipesTitle}>Our Delicious Recipes</h1>
-         {/* Carousel displaying recipe cards */}
         <Slider {...settings}>
-          {Object.keys(recipeList).map((id) => {
-            const recipe = recipeList[id];
-            const imageName = `${recipe.title.replace(/\s+/g, '')}.jpg`; // Constructing the image name from the recipe title
-            const image = images[imageName]; // Fetching the corresponding image
+          {recipeList.map((recipe, id) => {
+            const imageName = `${recipe.title.replace(/\s+/g, '')}.jpg`; 
+            const image = images[imageName]; 
 
             if (!image) {
               console.error(`Image not found: ${imageName}`);
-              return null; // If the image is not found, log an error and return null
+              return null;
             }
 
             return (
               <div key={id} className={styles.recipeCard}>
                 <Link
-                  to={`/recipes/${id}`} // Link to the detailed recipe page
+                  to={`/recipes/${id}`}
                   className={styles.recipeLink}
                 >
                   <div className={styles.recipeImageContainer}>
                     <img
-                      src={image.default || image} // Display the recipe image
+                      src={image.default || image}
                       alt={recipe.title}
                       className={styles.recipeImage}
                     />
-                    <div className={styles.recipeOverlay}></div> {/* Gradient overlay for better readability */}
+                    <div className={styles.recipeOverlay}></div>
                   </div>
                   <div className={styles.recipeInfoContainer}>
                     <h2 className={styles.recipeTitle}>{recipe.title}</h2>
@@ -150,7 +150,7 @@ const Recipes = () => {
                             : 'bg-red-500'
                         }`}
                       >
-                        {recipe.difficulty} {/* Difficulty level of the recipe */}
+                        {recipe.difficulty}
                       </span>
                       <span className={styles.recipeAllergiesText}>Allergies: {recipe.allergies}</span>
                     </div>
