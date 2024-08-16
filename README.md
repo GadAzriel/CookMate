@@ -8,7 +8,7 @@
 
 - **Recipe Browsing**: Explore a curated list of recipes on the homepage, complete with beautiful images and detailed descriptions.
 - **Detailed Instructions**: Each recipe includes comprehensive preparation steps, ingredient lists, and serving adjustments.
-- **Interactive Cooking Guide**: The **CookWithMe** feature guides users through the cooking process with a visual progress bar, real-time instructions, and voice command support.
+- **Interactive Cooking Guide**: The **Interactive Cooking** feature guides users through the cooking process with a visual progress bar, real-time instructions, and voice command support.
 - **Responsive Design**: Optimized for various device sizes, ensuring a consistent user experience across desktops, tablets, and mobile devices.
 - **Accessibility**: Navigation controls and UI elements are designed to be accessible and user-friendly, providing a smooth experience for all users.
 
