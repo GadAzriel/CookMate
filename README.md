@@ -67,7 +67,7 @@ Contributions are what make the open-source community such an amazing place to l
 Project Link: [ https://github.com/GadAzriel/CookMate]( https://github.com/GadAzriel/CookMate)  
 
 ## Deploymnet
-The app is deployed using Vercel right here: https://project-web-react.vercel.app/
+The app is deployed using Vercel right here: 
 
 ## Backend
 We used NextJS with MongoDB For the backend part, you can see the backend repository here: https://backendcookmate-5llw.vercel.app/
