@@ -70,7 +70,8 @@ Project Link: [ https://github.com/GadAzriel/CookMate]( https://github.com/GadAz
 The app is deployed using Vercel right here: https://cook-mate-kappa.vercel.app/
 
 ## Backend
-We used NextJS with MongoDB For the backend part, you can see the backend repository here: https://backendcookmate-5llw.vercel.app/
+We used NextJS with MongoDB For the backend part, you can see the backend repository here: https://backendcookmate-5llw.vercel.app/ 
+https://github.com/GadAzriel/backendcookmate
 
 ## Acknowledgments
 
